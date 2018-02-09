@@ -5,11 +5,15 @@
 .btn-filter {
     margin: 0 0 10px 15px;
     text-transform: none;
-    text-decoration: none;
-    color: #333;
 }
 
 .btn-filter:hover {
+    background: #323437;
+    color: #FFFFFF;
+    transition: all .3s ease;
+}
+
+.btn-active {
     background: #323437;
     color: #FFFFFF;
 }
@@ -77,8 +81,6 @@
     text-transform: none;
     font-size: 1rem;
     margin: 15px auto;
-    text-decoration: none;
-    color: #333;
 }
 
 .grid-title {
@@ -217,7 +219,6 @@
 .swiper-slide > .slide > .link a:hover {
     text-decoration: underline;
 }
-
 /* slider end */
 
 /* media */
@@ -245,5 +246,4 @@
         margin: 0 2% 15px 2%;
     }
 }
-
 /* media end */

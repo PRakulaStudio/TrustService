@@ -230,7 +230,6 @@ button::-moz-focus-inner {
     margin-left: 35px;
     border: solid transparent;
 }
-
 .mfp-arrow:after,
 .mfp-arrow .mfp-a {
     opacity: 0.8;
@@ -238,7 +237,6 @@ button::-moz-focus-inner {
     border-bottom-width: 12px;
     top: 8px;
 }
-
 .mfp-arrow:before,
 .mfp-arrow .mfp-b {
     border-top-width: 20px;
@@ -427,7 +425,6 @@ img.mfp-img {
         margin-left: 5px;
     }
 }
-
 @media all and (max-width: 800px) {
     .mfp-arrow {
         -webkit-transform: scale(0.75);
@@ -453,7 +450,6 @@ img.mfp-img {
 .mfp-ie7 .mfp-img {
     padding: 0;
 }
-
 .mfp-ie7 .mfp-bottom-bar {
     width: 600px;
     left: 50%;
@@ -469,7 +465,6 @@ img.mfp-img {
 .mfp-ie7 .mfp-content {
     padding-top: 44px;
 }
-
 .mfp-ie7 .mfp-close {
     top: 0;
     right: 0;

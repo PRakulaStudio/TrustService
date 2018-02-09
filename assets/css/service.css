@@ -89,7 +89,6 @@
     border: none;
     background: #FFFFFF;
     border-radius: 50px;
-    box-sizing: content-box;
 }
 
 .button-k {
@@ -115,11 +114,13 @@
     background: #F7B02F;
     border-radius: 50px;
     font-size: 0.9rem;
+    transition: all .3s ease;
 }
 
 .button-k:hover {
     background: #323437;
     color: #FFFFFF;
+    transition: all .3s ease;
 }
 
 .grid-title {
@@ -218,5 +219,4 @@
         margin: 0 2% 15px 2%;
     }
 }
-
 /* media end */

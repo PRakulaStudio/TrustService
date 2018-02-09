@@ -17,18 +17,17 @@
     padding: 0;
     margin: 0;
     font-family: 'GothamProRegular', sans-serif;
-    box-sizing: border-box;
 }
 
 html, body {
-    background-color: #f7f7f7;
+    background-color: #F7F7F7;
     min-width: 320px;
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-input, button, img, textarea {
+input, button, img {
     outline: none !important;
     -webkit-appearance: none !important;
 }
@@ -91,10 +90,6 @@ section h2:before {
 }
 
 /* HEADER */
-header .breadcrumbs .container {
-    overflow-x: scroll;
-}
-
 header .breadcrumbs {
     border-bottom: 1px solid #EBEBEB;
     display: flex;
@@ -129,12 +124,13 @@ header .breadcrumbs a.active {
 
 header .header {
     box-shadow: 0 0 10px #ddd;
-    padding: 16px 0 14px;
+    padding: 20px 0;
     background: #ffffff;
 }
 
 header .container {
     flex-direction: row;
+    overflow-x: scroll;
 }
 
 header .header .container {
@@ -149,12 +145,8 @@ header .logo a {
     width: 180px;
     height: 26px;
     display: inline-block;
-    padding: 37px 0 0;
+    padding: 7px 0;
     background: url("../images/logo.png") no-repeat center;
-}
-
-header .phone a span {
-    display: none;
 }
 
 header .phone a, header .btn-menu-open {
@@ -170,6 +162,10 @@ header .btn-menu-open {
     background-image: url("../images/menu-black.svg");
     margin: 0;
     cursor: pointer;
+}
+
+header .phone-desktop {
+    display: none;
 }
 
 header .menu > div {
@@ -239,7 +235,6 @@ header .menu > div .category-item-title {
     padding: 15px 0;
     display: block;
     border-bottom: 1px solid #E2E2E3;
-    color: #333;
 }
 
 header .menu > div .category-item-arrow {
@@ -273,7 +268,6 @@ header .menu > div a {
     font-size: 0.8rem;
     display: block;
     padding: 10px 0 10px 15px;
-    font-family: 'GothamProRegular', sans-serif;
 }
 
 header .menu-column-container {
@@ -310,7 +304,6 @@ header .menu-column-phone {
 ::-webkit-scrollbar {
     width: 6px;
 }
-
 /* HEADER */
 
 /* FOOTER */
@@ -327,11 +320,8 @@ footer p {
 }
 
 footer .phone p a {
-    text-decoration: none;
-}
-
-footer .phone p a span {
     color: #ffffff;
+    text-decoration: none;
     font-family: 'GothamProBold', sans-serif;
     line-height: 1.2rem;
 }
@@ -363,11 +353,6 @@ footer .dev-in p {
     margin-bottom: -10px;
 }
 
-footer .dev-in p a {
-    color: #7B7E83;
-    text-decoration: none;
-}
-
 footer .pr-akula {
     font-family: 'GothamProBold', sans-serif !important;
     font-size: 1.3rem !important;
@@ -378,7 +363,6 @@ footer .pr-akula-pr {
     font-family: 'GothamProBold', sans-serif !important;
     color: #E7AE05;
 }
-
 /* FOOTER */
 
 /* button */
@@ -401,13 +385,24 @@ footer .pr-akula-pr {
 }
 
 .btn-orange {
-    background: linear-gradient(to bottom, #FBCD00, #F9AA00);
+    background: #f9bb00;
+    transition: all .3s ease;
+}
+
+.btn-orange:hover {
+    background: #f99900;
+    transition: all .3s ease;
 }
 
 .btn-yellow {
     background: #FBCD00;
+    transition: all .3s ease;
 }
 
+.btn-yellow:hover {
+    background: #f99900;
+    transition: all .3s ease;
+}
 /* button end */
 
 /* reload */
@@ -424,7 +419,6 @@ footer .pr-akula-pr {
     height: 30px;
     vertical-align: middle;
 }
-
 /* reload end */
 
 /* grid */
@@ -439,7 +433,6 @@ footer .pr-akula-pr {
     width: 100%;
     height: auto;
 }
-
 /* grid end */
 
 /* hr */
@@ -459,7 +452,6 @@ hr {
     border: none;
     background: #F8B12F;
 }
-
 /* hr end */
 
 /* litebox */
@@ -472,111 +464,9 @@ div.lightbox {
     background: rgba(0, 0, 0, .8);
     display: flex;
     transition: all 0.2s linear;
-    z-index: 202;
 }
 
 div.lightbox img {
     margin: auto;
 }
-
-header {
-    z-index: 102;
-    width: 100%;
-}
-
-.header * {
-    transition: all 0.2s linear;
-}
-
-.header.atTop {
-    background: none;
-    box-shadow: none;
-}
-
-.header.atTop span {
-    color: #fff;
-}
-
-.header.atTop .logo a {
-    background-image: url("../images/logo_white.png");
-}
-
-.lightbox-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, .8);
-    display: flex;
-    transition: all 0.2s linear;
-    z-index: 202;
-}
-
-div.lightbox img {
-    margin: auto;
-}
-
 /* litebox end */
-
-.modal {
-    display: none;
-}
-
-.modal-form {
-    background: #fff;
-    margin: auto;
-    padding: 10px;
-    width: 30vw;
-    min-width: 300px;
-    line-height: 1.75;
-    display: flex;
-    position: relative;
-}
-
-.modal-form .btn-modal-form-close {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    right: 0;
-    top: 0;
-    background: #fabb00 url("../images/icons8-delete-100.png") no-repeat center;
-    background-size: cover;
-    cursor: pointer;
-    z-index: 3;
-}
-
-.modal-form .wrapper {
-    position: relative;
-    width: 100%;
-    margin: auto;
-}
-
-.modal-form .wrapper * {
-    width: 100%;
-}
-
-.modal-form input, .modal-form textarea {
-    padding: 10px 15px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    margin: 5px 0 0;
-    box-sizing: border-box;
-    font-size: .9rem;
-}
-
-.modal-form input:focus, .modal-form textarea:focus {
-    box-shadow: 0 0 1px 1px #fabb00 !important;
-}
-
-.modal-form h3 {
-    text-align: center;
-}
-
-.modal-form .btn.btn-yellow {
-    margin: 0 auto;
-    width: auto;
-    display: block;
-}

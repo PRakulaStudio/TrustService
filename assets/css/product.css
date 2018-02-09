@@ -105,12 +105,23 @@
 }
 
 .special > .d-flex > .btn {
+    position: relative;
     width: 200px;
     text-align: center;
     margin: auto !important;
     text-transform: none !important;
     opacity: 0.9;
-    border: 5px solid rgba(255, 255, 255, 0.3);
+}
+
+.special > .d-flex > .btn:before {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 45px;
+    top: -5px;
+    left: -5px;
+    border-radius: 30px;
+    border: 5px solid rgba(255, 255, 255, 0.5);
 }
 
 .special .img img {
@@ -243,7 +254,6 @@
 .swiper-slide > .slide > .link a:hover {
     text-decoration: underline;
 }
-
 /* slider end */
 
 /* media */
@@ -265,15 +275,11 @@
     .characteristics {
         width: 60%;
         margin: 0;
-        background: #FFFFFF;
     }
 
     .special {
-        position: relative;
-        margin: 0;
         width: 38%;
-        height: 300px;
+        margin: 0;
     }
 }
-
 /* media end */

@@ -22,17 +22,8 @@
     padding: 10px 15px 0 15px;
 }
 
-.grid-item > .text {
-    height: 85px;
-    overflow: hidden;
-}
-
 .grid-item > .text p {
     text-align: center;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
 }
 
 /* media */
@@ -60,5 +51,4 @@
         margin: 0 2% 15px 2%;
     }
 }
-
 /* media end */
