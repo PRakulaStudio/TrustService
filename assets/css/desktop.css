@@ -1,0 +1,206 @@
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+main {
+    flex-grow: 1;
+}
+
+header .logo {
+    order: 1;
+    flex-grow: 10;
+    margin-top: 7px;
+    margin-left: 10px;
+}
+
+header .logo span {
+    color: #373634;
+    font-size: 17px;
+    font-family: 'GothamProLight', sans-serif;
+    font-weight: 300;
+    padding-left: 20px;
+    position: relative;
+    border-left: 1px solid #cfcfcf;
+    line-height: 26px;
+    top: -10px;
+    left: 20px;
+    display: inline-block;
+}
+
+header, header * {
+    box-sizing: border-box;
+}
+
+header .phone {
+    order: 2;
+    padding: 10px;
+}
+
+header .menu {
+    order: 3;
+    padding: 10px;
+}
+
+header .header {
+    padding: 25px 0 32px;
+}
+
+header .phone {
+    order: 2;
+    display: flex;
+}
+
+header .phone p a {
+    background: none;
+    box-shadow: none;
+    width: auto;
+    height: auto;
+    text-decoration: none;
+}
+
+header .phone p a span {
+    display: block;
+    color: #000000;
+    text-decoration: none;
+    font-family: 'GothamProBold', sans-serif;
+    font-size: 1.2rem;
+    margin: 0 10px;
+}
+
+header .phone p {
+    font-family: 'GothamProBold', sans-serif;
+    font-size: 1.2rem;
+    margin: auto auto auto 17px;
+}
+
+header .phone p:before {
+    content: '';
+    position: absolute;
+    background-image: url("../images/phone-yellow.png");
+    background-size: 1.2rem;
+    height: 1.2rem;
+    width: 1.2rem;
+    margin: 0 0 0 -25px;
+}
+
+header .btn-menu-open {
+    box-shadow: none;
+    background-image: url("../images/menu-yellow.svg");
+}
+
+header .menu .menu-column {
+    width: 320px;
+    height: 100%;
+    margin: 0 0 0 auto;
+}
+
+header .menu > div {
+    border: none;
+}
+
+header .menu-column-container {
+    max-width: 1024px;
+    margin: auto;
+}
+
+header .search .btn-menu-close {
+    display: none;
+}
+
+header .search {
+    order: 3;
+}
+
+header .menu-column-phone {
+    display: block;
+    order: 1;
+}
+
+header .menu .menu-column > ul {
+    order: 2;
+    margin: 10px;
+    padding: 0 20px;
+    flex-grow: 1;
+}
+
+header .menu-column .menu-column-phone {
+    background: #fabb00;
+    padding: 45px 10px;
+    display: flex;
+}
+
+header .menu-column .menu-column-phone a:before {
+    content: '';
+    position: absolute;
+    background-size: 1.2rem;
+    height: 1.2rem;
+    width: 1.2rem;
+    margin: 0 0 0 -35px;
+    background-image: url(../images/phone-black.png);
+}
+
+header .menu-column .menu-column-phone .btn-menu-close {
+    order: 2;
+    background-color: transparent;
+    margin-top: -10px;
+}
+
+header .menu-column .menu-column-phone a span {
+    font-family: 'GothamProBold', sans-serif;
+    font-size: 1.2rem;
+    color: #000;
+}
+
+header .menu-column .menu-column-phone a {
+    position: relative;
+    padding: 7px 0;
+}
+
+header .menu-column .menu-column-phone p {
+    margin: -10px 11px 0 auto;
+}
+
+/* HEADER */
+footer .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+footer .container * {
+    margin: auto 0;
+}
+
+footer .dev-in p {
+    color: #7B7E83;
+    font-size: 0.8rem;
+    margin-bottom: 0;
+}
+
+footer {
+    padding: 30px 0;
+}
+
+.blockquotes {
+    margin: auto;
+}
+
+/*
+.scroll-page {
+    height: 100%;
+    position: relative;
+}
+
+.scroll-page section {
+    height: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    position: relative;
+}
+*/

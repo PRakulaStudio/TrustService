@@ -1,0 +1,582 @@
+@font-face {
+    font-family: 'GothamProRegular';
+    src: url('../fonts/GothamProRegular.ttf');
+}
+
+@font-face {
+    font-family: 'GothamProBold';
+    src: url('../fonts/GothamProBold.ttf');
+}
+
+@font-face {
+    font-family: 'GothamProLight';
+    src: url('../fonts/GothamProLight.ttf');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'GothamProRegular', sans-serif;
+    box-sizing: border-box;
+}
+
+html, body {
+    background-color: #f7f7f7;
+    min-width: 320px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+input, button, img, textarea {
+    outline: none !important;
+    -webkit-appearance: none !important;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+main p {
+    padding: 10px 15px;
+    color: #323437;
+    font-size: 0.9rem;
+    line-height: 25px;
+}
+
+section h2 {
+    padding: 20px 15px 20px 25px;
+    color: #323437;
+    font-family: 'GothamProBold', sans-serif;
+}
+
+section h2:before {
+    content: '';
+    width: 2px;
+    background: #F9AA00;
+    position: absolute;
+    height: 1.2rem;
+    margin: 4px 0 0 -10px;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.o-none {
+    opacity: 0;
+}
+
+.container, main > section {
+    max-width: 1024px;
+    width: 100%;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+}
+
+.d-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.m-auto {
+    width: 100%;
+    margin: auto;
+}
+
+/* HEADER */
+header .breadcrumbs .container {
+    overflow-x: scroll;
+}
+
+header .breadcrumbs {
+    border-bottom: 1px solid #EBEBEB;
+    display: flex;
+    overflow: hidden;
+    height: 46px;
+}
+
+header .breadcrumbs a {
+    color: #323437;
+    font-size: 0.9rem;
+    padding: 17px 15px 13px;
+    display: block;
+    position: relative;
+    white-space: nowrap;
+}
+
+header .breadcrumbs a:after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 7px;
+    background: url(../images/breadcrumb.png) no-repeat;
+    top: 0;
+    margin-left: 13px;
+}
+
+header .breadcrumbs a.active {
+    color: #65676a;
+    text-decoration: none;
+    cursor: default;
+}
+
+header .header {
+    box-shadow: 0 0 10px #ddd;
+    padding: 16px 0 14px;
+    background: #ffffff;
+}
+
+header .container {
+    flex-direction: row;
+}
+
+header .header .container {
+    justify-content: space-around;
+}
+
+header .logo span {
+    display: none;
+}
+
+header .logo a {
+    width: 180px;
+    height: 26px;
+    display: inline-block;
+    padding: 37px 0 0;
+    background: url("../images/logo.png") no-repeat center;
+}
+
+header .phone a span {
+    display: none;
+}
+
+header .phone a, header .btn-menu-open {
+    width: 36px;
+    height: 36px;
+    box-shadow: 0 0 2px #777;
+    border-radius: 33px;
+    display: block;
+    background: url("../images/phone-black.png") no-repeat center;
+}
+
+header .btn-menu-open {
+    background-image: url("../images/menu-black.svg");
+    margin: 0;
+    cursor: pointer;
+}
+
+header .menu > div {
+    background-color: rgba(50, 52, 55, 0.5);
+    width: 100%;
+    top: 0;
+    border-top: 5px solid #fabb00;
+    z-index: 10;
+    height: 100%;
+    max-height: 100%;
+    transition: all 0.2s linear;
+    left: 100%;
+    position: fixed;
+}
+
+header .menu > div.loaded {
+    left: 0;
+}
+
+header .search div {
+    background: #f6f6f6;
+    padding: 30px 10px;
+    display: flex;
+}
+
+header .search input[type=search] {
+    border-radius: 30px;
+    border: 1px solid #D7D8D8;
+    padding: 10px 30px 10px 15px;
+    width: 100%;
+}
+
+header .search input[type=submit] {
+    border: none;
+    cursor: pointer;
+    width: 25px;
+    height: 17px;
+    background: transparent url(../images/search_icon.png) no-repeat center center;
+    margin: 9px 0 0 -30px;
+}
+
+header .btn-menu-close {
+    margin: 0 0 0 20px;
+    padding: 18px;
+    background: #ffffff url("../images/remove.png") no-repeat center;
+}
+
+header .menu .menu-column {
+    height: 90%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+header .menu .menu-column > ul {
+    padding: 10px 30px;
+    overflow-y: auto;
+}
+
+header .menu li {
+    list-style: none;
+    position: relative;
+}
+
+header .menu > div .category-item-title {
+    font-family: 'GothamProBold', sans-serif;
+    padding: 15px 0;
+    display: block;
+    border-bottom: 1px solid #E2E2E3;
+    color: #333;
+}
+
+header .menu > div .category-item-arrow {
+    background: url("../images/arrow.svg");
+    transform: rotate(-90deg);
+    top: 10px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    display: block;
+    position: absolute;
+    transition: all 0.2s linear;
+}
+
+header .menu > div .category-item-arrow.closed {
+    transform: rotate(90deg);
+}
+
+header .menu > div .category-item-arrow + ul {
+    overflow: hidden;
+    transition: all 0.2s ease-out;
+}
+
+header .menu > div .category-item-arrow + ul.o-none {
+    max-height: 0 !important;
+}
+
+header .menu > div a {
+    color: #56585c;
+    text-decoration: none;
+    font-size: 0.8rem;
+    display: block;
+    padding: 10px 0 10px 15px;
+    font-family: 'GothamProRegular', sans-serif;
+}
+
+header .menu-column-container {
+    height: 100%;
+}
+
+header .menu-column-phone {
+    display: none;
+}
+
+::-webkit-scrollbar-button {
+    background: none;
+    width: 6px;
+    height: 0;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #b7b7b7;
+}
+
+::-webkit-resizer {
+    background: none;
+    width: 7px;
+    height: 0;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* HEADER */
+
+/* FOOTER */
+footer {
+    background: #323437;
+    text-align: center;
+    padding: 10px;
+    flex: 0 0 auto;
+}
+
+footer p {
+    color: #FFFFFF;
+    margin: 12px 0;
+}
+
+footer .phone p a {
+    text-decoration: none;
+}
+
+footer .phone p a span {
+    color: #ffffff;
+    font-family: 'GothamProBold', sans-serif;
+    line-height: 1.2rem;
+}
+
+footer .phone p {
+    font-family: 'GothamProBold', sans-serif;
+    font-size: 1.2rem;
+    margin-left: 20px;
+    line-height: 1.2rem;
+}
+
+footer .phone p:before {
+    content: '';
+    position: absolute;
+    background-image: url("../images/phone-yellow.png");
+    background-size: 1.2rem;
+    height: 1.2rem;
+    width: 1.2rem;
+    margin: 0 0 0 -25px;
+}
+
+footer .copyright p {
+    font-size: 0.8rem;
+}
+
+footer .dev-in p {
+    color: #7B7E83;
+    font-size: 0.8rem;
+    margin-bottom: -10px;
+}
+
+footer .dev-in p a {
+    color: #7B7E83;
+    text-decoration: none;
+}
+
+footer .pr-akula {
+    font-family: 'GothamProBold', sans-serif !important;
+    font-size: 1.3rem !important;
+    margin-bottom: 0 !important;
+}
+
+footer .pr-akula-pr {
+    font-family: 'GothamProBold', sans-serif !important;
+    color: #E7AE05;
+}
+
+/* FOOTER */
+
+/* button */
+.btn {
+    border: none;
+    border-radius: 30px;
+    padding: 15px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-family: 'GothamProBold', sans-serif;
+    margin: 30px auto;
+    cursor: pointer;
+}
+
+.btn > img {
+    width: 15px;
+    height: 15px;
+    vertical-align: bottom;
+    margin: 0 10px 0 0;
+}
+
+.btn-orange {
+    background: linear-gradient(to bottom, #FBCD00, #F9AA00);
+}
+
+.btn-yellow {
+    background: #FBCD00;
+}
+
+/* button end */
+
+/* reload */
+.reload-btn {
+    cursor: pointer;
+    border-radius: 50px;
+    padding: 10px;
+    margin: 15px auto;
+    background: #323437;
+}
+
+.reload-btn img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+/* reload end */
+
+/* grid */
+.grid-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.grid-item {
+    width: 100%;
+    height: auto;
+}
+
+/* grid end */
+
+/* hr */
+hr {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    border: none;
+    background: #E6E6E6;
+}
+
+.yellow:before {
+    position: absolute;
+    content: "";
+    width: 20%;
+    height: 2px;
+    border: none;
+    background: #F8B12F;
+}
+
+/* hr end */
+
+/* litebox */
+div.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+    display: flex;
+    transition: all 0.2s linear;
+    z-index: 202;
+}
+
+div.lightbox img {
+    margin: auto;
+}
+
+header {
+    z-index: 102;
+    width: 100%;
+}
+
+.header * {
+    transition: all 0.2s linear;
+}
+
+.header.atTop {
+    background: none;
+    box-shadow: none;
+}
+
+.header.atTop span {
+    color: #fff;
+}
+
+.header.atTop .logo a {
+    background-image: url("../images/logo_white.png");
+}
+
+.lightbox-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .8);
+    display: flex;
+    transition: all 0.2s linear;
+    z-index: 202;
+}
+
+div.lightbox img {
+    margin: auto;
+}
+
+/* litebox end */
+
+.modal {
+    display: none;
+}
+
+.modal-form {
+    background: #fff;
+    margin: auto;
+    padding: 10px;
+    width: 30vw;
+    min-width: 300px;
+    line-height: 1.75;
+    display: flex;
+    position: relative;
+}
+
+.modal-form .btn-modal-form-close {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: 0;
+    top: 0;
+    background: #fabb00 url("../images/icons8-delete-100.png") no-repeat center;
+    background-size: cover;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.modal-form .wrapper {
+    position: relative;
+    width: 100%;
+    margin: auto;
+}
+
+.modal-form .wrapper * {
+    width: 100%;
+}
+
+.modal-form input, .modal-form textarea {
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin: 5px 0 0;
+    box-sizing: border-box;
+    font-size: .9rem;
+}
+
+.modal-form input:focus, .modal-form textarea:focus {
+    box-shadow: 0 0 1px 1px #fabb00 !important;
+}
+
+.modal-form h3 {
+    text-align: center;
+}
+
+.modal-form .btn.btn-yellow {
+    margin: 0 auto;
+    width: auto;
+    display: block;
+}
