@@ -28,16 +28,16 @@
                 </div>
             <?php endif; ?>
 
-
             <div class="catalog-block">
                 <?= getData('items', 'catalog_page_item'); ?>
                 <?php if (getData('count') == 0): ?>
                     <h1 style="text-align:center; margin-bottom: 20px; width: 100%;">Нет товаров в категории</h1>
                 <?php endif; ?>
-
                 <!--<div class="d-flex m-auto"><a class="reload-btn"><img src="/assets/images/reload.svg" alt=""></a></div>-->
 
             </div>
+            <?php if (false): ?>
+
             <div class="grid-item grid-item-text">
                 <div class="text">
                     <h3>Гусеничные экскаваторы в Киргизии</h3>
@@ -59,54 +59,55 @@
             <div class="d-flex m-auto"><a class="btn btn-orange"><img src="/assets/images/download.png" alt="">Скачать
                     презентацию в PDF</a></div>
 
-            <div class="grid-title">
-                <p>Смотрите также:</p>
-            </div>
+                <div class="grid-title">
+                    <p>Смотрите также:</p>
+                </div>
 
-            <!-- Slider container -->
-            <div class="swiper-container">
-                <!-- Additional required wrapper -->
-                <div class="swiper-wrapper">
-                    <!-- Slides -->
-                    <div class="swiper-slide">
-                        <div class="slide">
-                            <img src="/assets/images/jpg/trade-in.jpg" alt="">
-                            <div class="link">
-                                <a href="#">Погрузчики</a>
+                <!-- Slider container -->
+                <div class="swiper-container">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                            <div class="slide">
+                                <img src="/assets/images/jpg/trade-in.jpg" alt="">
+                                <div class="link">
+                                    <a href="#">Погрузчики</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide">
-                            <img src="/assets/images/jpg/trade-in.jpg" alt="">
-                            <div class="link">
-                                <a href="#">Дорожные катки</a>
+                        <div class="swiper-slide">
+                            <div class="slide">
+                                <img src="/assets/images/jpg/trade-in.jpg" alt="">
+                                <div class="link">
+                                    <a href="#">Дорожные катки</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide">
-                            <img src="/assets/images/jpg/trade-in.jpg" alt="">
-                            <div class="link">
-                                <a href="#">Навесное оборудование</a>
+                        <div class="swiper-slide">
+                            <div class="slide">
+                                <img src="/assets/images/jpg/trade-in.jpg" alt="">
+                                <div class="link">
+                                    <a href="#">Навесное оборудование</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide">
-                            <img src="/assets/images/jpg/trade-in.jpg" alt="">
-                            <div class="link">
-                                <a href="#">Навесное оборудование</a>
+                        <div class="swiper-slide">
+                            <div class="slide">
+                                <img src="/assets/images/jpg/trade-in.jpg" alt="">
+                                <div class="link">
+                                    <a href="#">Навесное оборудование</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- navigation buttons -->
-            <div class="swiper-button">
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-            </div>
+                <!-- navigation buttons -->
+                <div class="swiper-button">
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            <?php endif; ?>
         </section>
     </main>
     <footer data-template="footer">

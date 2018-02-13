@@ -23,101 +23,54 @@
             </div>
         </div>
 
-        <div class="d-flex m-auto"><a class="btn btn-orange">Узнать цену</a></div>
+        <div class="d-flex m-auto"><a class="btn btn-orange btn-price" id="openModal">Узнать цену</a></div>
     </section>
 
     <section class="grid-section row-column">
         <div class="grid-item characteristics">
             <div class="title">
-                <p>Харрактеристики</p>
+                <p>Характеристики</p>
             </div>
 
             <hr class="yellow">
 
             <div class="text-characteristics">
-                <div class="name-value">
-                    <div>
-                        <p>Эксплуатационная масса, кг</p>
-                    </div>
 
-                    <div>
-                        <p><?= getData('weight') ?></p>
-                    </div>
-                </div>
+                <?php
+                $cat_items = getCatalogItemFromParameters(getData('id'));
+                for ($i = 0; $i < count($cat_items) && $i <= 4; $i++):?>
+                    <?php if ($cat_items[$i]['parameter'] != "category" && $cat_items[$i]['parameter'] != "photo"): ?>
+                        <div class="name-value">
+                            <div>
+                                <p><?= $cat_items[$i]['title'] ?></p>
+                            </div>
 
-                <hr>
-
-                <div class="name-value">
-                    <div>
-                        <p>Объем ковша, м3</p>
-                    </div>
-
-                    <div>
-                        <p><?= getData('capacity') ?></p>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="name-value">
-                    <div>
-                        <p>Рабочий цикл, сек</p>
-                    </div>
-
-                    <div>
-                        <p>13</p>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="name-value">
-                    <div>
-                        <p>Эксплуатационная производительность экскаватора </p>
-                    </div>
-
-                    <div>
-                        <p>(с Vк=0,92 м3), м3/ч 254</p>
-                    </div>
-                </div>
-
-                <hr>
+                            <div>
+                                <p><?= $cat_items[$i]['data'] ?></p>
+                            </div>
+                        </div>
+                        <hr>
+                    <?php endif; ?>
+                <?php endfor; ?>
 
                 <div id="characteristics">
-                    <div class="name-value">
-                        <div>
-                            <p>Объем ковша, м3</p>
-                        </div>
+                    <?php
+                    for ($i = 5; $i < count($cat_items); $i++):?>
+                        <?php if ($cat_items[$i]['parameter'] != "category" && $cat_items[$i]['parameter'] != "photo"): ?>
+                            <div class="name-value">
+                                <div>
+                                    <p><?= $cat_items[$i]['title'] ?></p>
+                                </div>
 
-                        <div>
-                            <p>0,92 / 1 ,1</p>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="name-value">
-                        <div>
-                            <p>Рабочий цикл, сек</p>
-                        </div>
-
-                        <div>
-                            <p>13</p>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="name-value">
-                        <div>
-                            <p>Эксплуатационная производительность экскаватора </p>
-                        </div>
-
-                        <div>
-                            <p>(с Vк=0,92 м3), м3/ч 254</p>
-                        </div>
-                    </div>
+                                <div>
+                                    <p><?= $cat_items[$i]['data'] ?></p>
+                                </div>
+                            </div>
+                            <hr>
+                        <?php endif; ?>
+                    <?php endfor; ?>
                 </div>
+
             </div>
             <div class="d-flex"><a class="btn btn-yellow">развернуть<img src="/assets/images/down-arrow.svg" alt=""></a>
             </div>
@@ -127,84 +80,88 @@
             <div class="img">
                 <img src="/assets/images/jpg/service.jpg" alt="">
             </div>
-            <div class="d-flex m-auto"><a class="btn btn-yellow">Спецсервис</a></div>
+            <div class="d-flex m-auto"><a class="btn btn-yellow" href="/service">Спецсервис</a></div>
         </div>
     </section>
 
     <section class="grid-section">
-        <div class="grid-item advantage">
-            <div class="title">
-                <p>Преимущества мини-экскаватора</p>
+        <p></p>
+        <?php if (false): ?>
+
+            <div class="grid-item advantage">
+                <div class="title">
+                    <p>Преимущества мини-экскаватора</p>
+                </div>
+
+                <hr class="yellow">
+
+                <div class="text">
+                    <p>Не следует, однако забывать, что дальнейшее развитие различных форм деятельности влечет за собой
+                        процесс внедрения и модернизации системы обучения кадров,
+                        соответствует насущным потребностям. Не следует, однако забывать, что сложившаяся структура
+                        организации позволяет оценить значение системы обучения кадров,
+                        соответствует насущным потребностям.</p>
+
+                    <p>Таким образом постоянный количественный рост и сфера нашей активности представляет собой интересный
+                        эксперимент проверки форм развития. Разнообразный и богатый
+                        опыт консультация с широким активом требуют определения и уточнения позиций, занимаемых участниками
+                        в отношении поставленных задач. Товарищи! дальнейшее
+                        развитие различных форм деятельности влечет за собой процесс внедрения и модернизации форм развития.
+                        С другой стороны новая модель организационной деятельности
+                        в значительной степени обуславливает создание соответствующий условий активизации.</p>
+                </div>
+                <div class="d-flex"><a class="btn btn-orange btn-price">Узнать цену</a></div>
             </div>
 
-            <hr class="yellow">
-
-            <div class="text">
-                <p>Не следует, однако забывать, что дальнейшее развитие различных форм деятельности влечет за собой
-                    процесс внедрения и модернизации системы обучения кадров,
-                    соответствует насущным потребностям. Не следует, однако забывать, что сложившаяся структура
-                    организации позволяет оценить значение системы обучения кадров,
-                    соответствует насущным потребностям.</p>
-
-                <p>Таким образом постоянный количественный рост и сфера нашей активности представляет собой интересный
-                    эксперимент проверки форм развития. Разнообразный и богатый
-                    опыт консультация с широким активом требуют определения и уточнения позиций, занимаемых участниками
-                    в отношении поставленных задач. Товарищи! дальнейшее
-                    развитие различных форм деятельности влечет за собой процесс внедрения и модернизации форм развития.
-                    С другой стороны новая модель организационной деятельности
-                    в значительной степени обуславливает создание соответствующий условий активизации.</p>
+            <div class="grid-title">
+                <p>Навесное оборудование:</p>
             </div>
-            <div class="d-flex"><a class="btn btn-orange">Узнать цену</a></div>
-        </div>
 
-        <div class="grid-title">
-            <p>Навесное оборудование:</p>
-        </div>
-
-        <!-- Slider container -->
-        <div class="swiper-container">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-                <!-- Slides -->
-                <div class="swiper-slide">
-                    <div class="slide">
-                        <img src="/assets/images/jpg/product-slider.jpg" alt="">
-                        <div class="link">
-                            <a href="#">Ковш для мини-экскаватора</a>
+            <!-- Slider container -->
+            <div class="swiper-container">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <div class="slide">
+                            <img src="/assets/images/jpg/product-slider.jpg" alt="">
+                            <div class="link">
+                                <a href="#">Ковш для мини-экскаватора</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="slide">
-                        <img src="/assets/images/jpg/product-slider.jpg" alt="">
-                        <div class="link">
-                            <a href="#">Ковш для мини-экскаватора</a>
+                    <div class="swiper-slide">
+                        <div class="slide">
+                            <img src="/assets/images/jpg/product-slider.jpg" alt="">
+                            <div class="link">
+                                <a href="#">Ковш для мини-экскаватора</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="slide">
-                        <img src="/assets/images/jpg/product-slider.jpg" alt="">
-                        <div class="link">
-                            <a href="#">Ковш для мини-экскаватора</a>
+                    <div class="swiper-slide">
+                        <div class="slide">
+                            <img src="/assets/images/jpg/product-slider.jpg" alt="">
+                            <div class="link">
+                                <a href="#">Ковш для мини-экскаватора</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="slide">
-                        <img src="/assets/images/jpg/product-slider.jpg" alt="">
-                        <div class="link">
-                            <a href="#">Ковш для мини-экскаватора</a>
+                    <div class="swiper-slide">
+                        <div class="slide">
+                            <img src="/assets/images/jpg/product-slider.jpg" alt="">
+                            <div class="link">
+                                <a href="#">Ковш для мини-экскаватора</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- navigation buttons -->
-        <div class="swiper-button">
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-        </div>
+            <!-- navigation buttons -->
+            <div class="swiper-button">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        <?php endif; ?>
     </section>
 </main>
 <footer data-template="footer">
@@ -223,6 +180,63 @@
         </div>
     </div>
 </footer>
+<script src="/assets/js/base.js"></script>
+
+<div class="modal">
+    <div class="wrapper">
+        <h3>Узнать цену</h3>
+        <p>
+            <input type="text" class="form-name" placeholder="Ваше имя">
+        </p>
+        <p>
+            <input type="text" class="form-phone" placeholder="Ваш телефон">
+        </p>
+        <p>
+            <button id="send" class="btn btn-yellow">Оставить заявку</button>
+        </p>
+    </div>
+</div>
+<script>
+    modal("#openModal", ".modal", function (div) {
+        div.querySelector("#send").addEventListener('click', function () {
+            let data = new FormData();
+            let fname = div.querySelector('.form-name').value;
+            let fphone = div.querySelector('.form-phone').value;
+            if (fname === "" || fphone === "") {
+                alert("Не все поля заполнены");
+                return;
+            }
+            data.append('name', fname);
+            data.append('phone', fphone);
+            return fetch('/system/plugins/SecArgonia/feedback/price/create', {method: 'POST', credentials: 'same-origin', body: data})
+                .then(function (response) {
+                    let responseData = false;
+                    try {
+                        responseData = response.json();
+                    }
+                    catch (e) {
+                        responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                        response.text().then(console.debug);
+                    }
+
+                    return responseData;
+                })
+                .then(function (response) {
+                    if (response.status) {
+                        alert("Ваша заявка принята, мы ответим Вам в ближайшее время");
+                    }
+                });
+        });
+    });
+</script>
+<script>
+    if (!window.pms) window.pms = {};
+    if (!pms.plugins) pms.plugins = {};
+    if (!pms.plugins.catalog) pms.plugins.catalog = {};
+    pms.plugins.catalog.item = {};
+    pms.plugins.catalog.item['<?=getData('id')?>'] =<?=getData(false, false, false, true)?>;
+    pms.plugins.catalog.currentItem = pms.plugins.catalog.item['<?=getData('id')?>'];
+</script>
 <script src="/assets/js/base.js"></script>
 <script src="/assets/js/swiper.min.js"></script>
 <script src="/assets/js/product.js"></script>

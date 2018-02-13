@@ -101,7 +101,7 @@ $(document).ready(function () {
     });
 
     (function ($) {
-        $(".nav").mCustomScrollbar({
+        $(".menu-column > ul").mCustomScrollbar({
             axis: "y",
             theme: "dark-3"
         });
@@ -246,8 +246,73 @@ $(document).ready(function () {
         }
     });
 
-    //initMap();
+    $("#client_popup form").submit(function (ev) {
+        ev.preventDefault();
+        let div = this;
+        let data = new FormData();
+        let fname = div.querySelector('.form-name').value;
+        let fphone = div.querySelector('.form-phone').value;
+        if (fname === "" || fphone === "") {
+            alert("Не все поля заполнены");
+            return;
+        }
+        data.append('name', fname);
+        data.append('phone', fphone);
 
+        return fetch('/system/plugins/SecArgonia/feedback/client/create', {method: 'POST', credentials: 'same-origin', body: data})
+            .then(function (response) {
+                let responseData = false;
+                try {
+                    responseData = response.json();
+                }
+                catch (e) {
+                    responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                    response.text().then(console.debug);
+                }
+
+                return responseData;
+            })
+            .then(function (response) {
+                if (response.status) {
+                    alert("Ваша заявка принята, мы ответим Вам в ближайшее время");
+                }
+            });
+    });
+    $("#send_message_popup form").submit(function (ev) {
+        ev.preventDefault();
+        let div = this;
+        let data = new FormData();
+        let fname = div.querySelector('.form-name').value;
+        let fphone = div.querySelector('.form-phone').value;
+        /*let fmail = div.querySelector('.form-mail').value;
+        let fmessage = div.querySelector('.form-message').value;*/
+        if (fname === "" || fphone === "" /*|| fmail === "" || fmessage === ""*/) {
+            alert("Не все поля заполнены");
+            return;
+        }
+        data.append('name', fname);
+        data.append('phone', fphone);
+        /*data.append('email', fmail);
+        data.append('message', fmessage);*/
+        return fetch('/system/plugins/SecArgonia/feedback/message/create', {method: 'POST', credentials: 'same-origin', body: data})
+            .then(function (response) {
+                let responseData = false;
+                try {
+                    responseData = response.json();
+                }
+                catch (e) {
+                    responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                    response.text().then(console.debug);
+                }
+
+                return responseData;
+            })
+            .then(function (response) {
+                if (response.status) {
+                    alert("Ваша заявка принята, мы ответим Вам в ближайшее время");
+                }
+            });
+    });
 });
 
 

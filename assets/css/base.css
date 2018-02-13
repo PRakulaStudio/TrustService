@@ -26,6 +26,8 @@ html, body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
+    position: relative;
 }
 
 input, button, img, textarea {
@@ -64,7 +66,7 @@ section h2:before {
 }
 
 .overflow-hidden {
-    overflow: hidden;
+    overflow: hidden !important;
 }
 
 .o-none {
@@ -173,7 +175,7 @@ header .btn-menu-open {
 }
 
 header .menu > div {
-    background-color: rgba(50, 52, 55, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
     top: 0;
     border-top: 5px solid #fabb00;
@@ -240,6 +242,7 @@ header .menu > div .category-item-title {
     display: block;
     border-bottom: 1px solid #E2E2E3;
     color: #333;
+    cursor: pointer;
 }
 
 header .menu > div .category-item-arrow {
@@ -401,11 +404,23 @@ footer .pr-akula-pr {
 }
 
 .btn-orange {
-    background: linear-gradient(to bottom, #FBCD00, #F9AA00);
+    background: #f9bb00;
+    transition: all .3s ease;
+}
+
+.btn-orange:hover {
+    background: #f99900;
+    transition: all .3s ease;
 }
 
 .btn-yellow {
     background: #FBCD00;
+    transition: all .3s ease;
+}
+
+.btn-yellow:hover {
+    background: #f99900;
+    transition: all .3s ease;
 }
 
 /* button end */
@@ -527,7 +542,7 @@ div.lightbox img {
     background: #fff;
     margin: auto;
     padding: 10px;
-    width: 30vw;
+    width: 550px;
     min-width: 300px;
     line-height: 1.75;
     display: flex;
@@ -538,12 +553,12 @@ div.lightbox img {
     content: '';
     display: block;
     position: absolute;
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     right: 0;
     top: 0;
-    background: #fabb00 url("../images/icons8-delete-100.png") no-repeat center;
-    background-size: cover;
+    background: #ffdf41 url(../images/icons8-delete-100.png) no-repeat center;
+    background-size: 15px;
     cursor: pointer;
     z-index: 3;
 }
@@ -559,20 +574,49 @@ div.lightbox img {
 }
 
 .modal-form input, .modal-form textarea {
-    padding: 10px 15px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    margin: 5px 0 0;
-    box-sizing: border-box;
-    font-size: .9rem;
+    width: 100%;
+    height: 60px;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    -moz-border-radius: 31px;
+    -webkit-border-radius: 31px;
+    border-radius: 31px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #fff;
+    padding: 0 35px;
+    margin-bottom: 25px;
+    font-size: 16px;
+    color: #7b7b7b;
+    font-family: 'GothamProRegular', sans-serif;
+    font-weight: 400;
 }
 
 .modal-form input:focus, .modal-form textarea:focus {
     box-shadow: 0 0 1px 1px #fabb00 !important;
 }
 
+#send {
+    font-family: 'GothamProRegular', sans-serif;
+    font-size: 17px;
+    text-transform: initial;
+}
+
 .modal-form h3 {
     text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: "GothamProBold", sans-serif;
+}
+
+.modal-form h3:after {
+    display: block;
+    content: '';
+    width: 27px;
+    height: 3px;
+    background-color: #fabb00;
+    margin: 10px auto 25px;
 }
 
 .modal-form .btn.btn-yellow {

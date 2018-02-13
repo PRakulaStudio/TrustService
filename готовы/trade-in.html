@@ -46,29 +46,52 @@
         <div class="d-flex m-auto"><a id="openModal" class="btn btn-orange">Оставить заявку</a></div>
     </section>
 </main>
+<script src="/assets/js/base.js"></script>
+
 <div class="modal">
     <div class="wrapper">
         <h3>Оставить заявку</h3>
         <p>
-            <input type="text" placeholder="Ваше имя">
+            <input type="text" class="form-name" placeholder="Ваше имя">
         </p>
         <p>
-            <input type="text" placeholder="Ваш телефон">
-        </p>
-        <p>
-            <textarea name="" id="" rows="5" placeholder="Текст сообщения"></textarea>
+            <input type="text" class="form-phone" placeholder="Ваш телефон">
         </p>
         <p>
             <button id="send" class="btn btn-yellow">Оставить заявку</button>
         </p>
     </div>
 </div>
-<footer data-include="footer.html"></footer>
-<script src="/assets/js/base.js"></script>
 <script>
     modal("#openModal", ".modal", function (div) {
         div.querySelector("#send").addEventListener('click', function () {
-            log("Что-то");
+            let data = new FormData();
+            let fname = div.querySelector('.form-name').value;
+            let fphone = div.querySelector('.form-phone').value;
+            if (fname === "" || fphone === "") {
+                alert("Не все поля заполнены");
+                return;
+            }
+            data.append('name', fname);
+            data.append('phone', fphone);
+            return fetch('/system/plugins/SecArgonia/feedback/request/create', {method: 'POST', credentials: 'same-origin', body: data})
+                .then(function (response) {
+                    let responseData = false;
+                    try {
+                        responseData = response.json();
+                    }
+                    catch (e) {
+                        responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                        response.text().then(console.debug);
+                    }
+
+                    return responseData;
+                })
+                .then(function (response) {
+                    if (response.status) {
+                        alert("Ваша заявка принята, мы ответим Вам в ближайшее время");
+                    }
+                });
         });
     });
 </script>

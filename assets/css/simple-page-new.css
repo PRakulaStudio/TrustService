@@ -1,0 +1,29 @@
+.grid-item {
+  padding: 20px;
+  position: relative;
+}
+.grid-item > img, .grid-item > p > img {
+  max-height: 400px;
+  object-fit: cover;
+  max-width: 100%;
+}
+.grid-item p {
+  padding-left: 0;
+  padding-right: 0;
+}
+.grid-item a.btn {
+  color: #333;
+  display: flex;
+  width: max-content;
+  text-decoration: none;
+  padding: 15px 25px;
+}
+.grid-item a.btn img {
+  margin: 5px;
+}
+.grid-item blockquote {
+  margin: 10px 0;
+  padding: 5px 15px 5px 40px;
+  border-left: 5px solid #F9AA00;
+  background: #FFFFFF;
+}

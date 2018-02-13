@@ -28,16 +28,16 @@ var mySwiper = new Swiper('.swiper-container', {
         },
     }
 
-})
+});
 
 document.querySelector('div.grid-item div.d-flex a.btn').onclick = function (event) {
     var block = document.getElementById('characteristics');
     if (block.clientHeight === 0) {
         block.style.height = "auto";
-        event.target.innerHTML = 'свернуть<img src="assets/images/up-arrow.svg" alt="">';
+        event.target.innerHTML = 'свернуть<img src="/assets/images/up-arrow.svg" alt="">';
     }
     else {
         block.style.height = "0px";
-        event.target.innerHTML = 'развернуть<img src="assets/images/down-arrow.svg" alt="">';
+        event.target.innerHTML = 'развернуть<img src="/assets/images/down-arrow.svg" alt="">';
     }
 };

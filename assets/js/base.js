@@ -1,4 +1,5 @@
 const body = document.querySelector("body");
+log(body);
 
 window.addEventListener("load", function () {
     function a(a, b) {
@@ -13,12 +14,10 @@ window.addEventListener("load", function () {
         }
     }
 
-    document.querySelectorAll("[data-include]").forEach(i = > {
-        a(i, i.attributes.getNamedItem("data-include").value
-)
-    ;
-})
-    ;
+    document.querySelectorAll("[data-include]").forEach(i => {
+        a(i, i.attributes.getNamedItem("data-include").value);
+    });
+
 
     let btn_active = document.querySelector(".breadcrumbs .active"); // Активная хлебная крошка
     let btn_menu_open = document.querySelector(".btn-menu-open"); // Кнопка открытия меню
@@ -60,6 +59,7 @@ window.addEventListener("load", function () {
         };
 
     btn_menu_open.onclick = function (e) { // Открытие блока с поиском и меню
+        changeFullpageScroll(false);
         menu.classList.remove("d-none");
         setTimeout(function () {
             menu.classList.remove("o-none");
@@ -67,20 +67,21 @@ window.addEventListener("load", function () {
         body.classList.add("overflow-hidden");
     };
 
-    btn_menu_close.forEach(btn = > {
+    btn_menu_close.forEach(btn => {
         btn.onclick = function (e) { // Закрытие блока с поиском и меню
-        let func = function () {
-            menu.classList.add("d-none");
-            menu.removeEventListener("transitionend", func, false);
+            changeFullpageScroll(true);
+            let func = function () {
+                menu.classList.add("d-none");
+                menu.removeEventListener("transitionend", func, false);
+            };
+            menu.classList.add("o-none");
+            menu.addEventListener("transitionend", func, false);
+            body.classList.remove("overflow-hidden");
         };
-        menu.classList.add("o-none");
-        menu.addEventListener("transitionend", func, false);
-        body.classList.remove("overflow-hidden");
-    };
-})
-    ;
+    });
     menu.addEventListener('click', function (e) {
         if (e.path[0].classList.contains('loaded') || e.path[0].classList.contains('menu-column-container')) {
+            changeFullpageScroll(true);
             let func = function () {
                 menu.classList.add("d-none");
                 menu.removeEventListener("transitionend", func, false);
@@ -91,17 +92,14 @@ window.addEventListener("load", function () {
         }
     });
 
-    /*
-
-        setTimeout(function () { // Для теста открытие меню
-            menu.classList.remove("d-none");
-            setTimeout(function () {
-                menu.classList.remove("o-none");
-            }, 20);
-            body.classList.add("overflow-hidden");
-        });
-    */
-
+    function changeFullpageScroll(value) {
+        try {
+            $.fn.fullpage.setMouseWheelScrolling(value);
+            $.fn.fullpage.setAllowScrolling(value);
+        }
+        catch (e) {
+        }
+    }
 });
 
 // UTILS
@@ -138,7 +136,8 @@ function Lightboxer() {
 
 function modal(clicker, modal_div, func) {
     modal_div = document.querySelector(modal_div);
-    document.querySelector(clicker).addEventListener('click', function () {
+    document.querySelector(clicker).addEventListener('click', function (e) {
+        e.preventDefault();
         let lightboxer = new Lightboxer();
         lightboxer.setHtml("<div class='modal-form'><span class='btn-modal-form-close'></span>" + modal_div.innerHTML + "</div>");
         document.querySelector(".lightbox-container").addEventListener('click', function (e) {

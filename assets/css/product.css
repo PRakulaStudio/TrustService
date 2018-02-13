@@ -25,6 +25,16 @@
     margin: 0 0 15px 15px;
 }
 
+.special a {
+    color: #333333;
+    text-decoration: none;
+}
+
+.btn-price {
+    width: 200px;
+    text-align: center;
+}
+
 .row-column {
     max-width: 994px;
     justify-content: unset;
@@ -105,7 +115,7 @@
 }
 
 .special > .d-flex > .btn {
-    width: 200px;
+    width: 230px;
     text-align: center;
     margin: auto !important;
     text-transform: none !important;
