@@ -28,4 +28,10 @@ var mySwiper = new Swiper('.swiper-container', {
         },
     }
 
-})
+});
+
+document.querySelectorAll(".btn.btn-filter.btn-orange").forEach(value => {
+    if (value.attributes.getNamedItem("href").value === location.pathname) {
+        value.classList.add("active");
+    }
+});

@@ -39,7 +39,7 @@
                 <?php
                 $cat_items = getCatalogItemFromParameters(getData('id'));
                 for ($i = 0; $i < count($cat_items) && $i <= 4; $i++):?>
-                    <?php if ($cat_items[$i]['parameter'] != "category" && $cat_items[$i]['parameter'] != "photo"): ?>
+                    <?php if ($cat_items[$i]['parameter'] != "category" && $cat_items[$i]['parameter'] != "photo"&& $cat_items[$i]['parameter'] != "price"): ?>
                         <div class="name-value">
                             <div>
                                 <p><?= $cat_items[$i]['title'] ?></p>
@@ -56,7 +56,7 @@
                 <div id="characteristics">
                     <?php
                     for ($i = 5; $i < count($cat_items); $i++):?>
-                        <?php if ($cat_items[$i]['parameter'] != "category" && $cat_items[$i]['parameter'] != "photo"): ?>
+                        <?php if ($cat_items[$i]['parameter'] != "category" && $cat_items[$i]['parameter'] != "photo"&& $cat_items[$i]['parameter'] != "price"): ?>
                             <div class="name-value">
                                 <div>
                                     <p><?= $cat_items[$i]['title'] ?></p>
@@ -110,7 +110,7 @@
                         С другой стороны новая модель организационной деятельности
                         в значительной степени обуславливает создание соответствующий условий активизации.</p>
                 </div>
-                <div class="d-flex"><a class="btn btn-orange btn-price">Узнать цену</a></div>
+                <div class="d-flex"><a class="btn btn-orange btn-price">Узнать цену</a></div>x
             </div>
 
             <div class="grid-title">
@@ -164,22 +164,7 @@
         <?php endif; ?>
     </section>
 </main>
-<footer data-template="footer">
-    <div class="container">
-        <div class="phone" data-global-container="phone">
-            <p><a href="tel:88001234567"><span>8 800 123 45 67</span></a></p>
-        </div>
-        <div class="copyright">
-            <p>© Copyright 2018 - ТрастСервис</p>
-        </div>
-        <div class="dev-in">
-            <p>Разработано в</p>
-            <p class="pr-akula">
-                <span class="pr-akula-pr">PR</span> Akula
-            </p>
-        </div>
-    </div>
-</footer>
+<?= getData(false, 'footer', ['']) ?>
 <script src="/assets/js/base.js"></script>
 
 <div class="modal">
@@ -208,6 +193,7 @@
             }
             data.append('name', fname);
             data.append('phone', fphone);
+            data.append('catalog_item', <?= getData('id') ?>);
             return fetch('/system/plugins/SecArgonia/feedback/price/create', {method: 'POST', credentials: 'same-origin', body: data})
                 .then(function (response) {
                     let responseData = false;

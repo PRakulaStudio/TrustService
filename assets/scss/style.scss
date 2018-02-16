@@ -420,6 +420,16 @@ body::-moz-scrollbar-thumb:hover {
   box-sizing: border-box;
 }
 
+.content-size {
+  height: 100%;
+  padding: 50px 15px;
+}
+
+/*.section:not(:nth-child(1)) .content {
+  height: 100%;
+  padding: 50px 15px;
+}*/
+
 #fp-nav.right {
   right: calc(50% - 640px);
 }
@@ -1759,23 +1769,16 @@ body::-moz-scrollbar-thumb:hover {
     right: 40px;
     top: 85px;
   }
-
-  header .phone {
-    visibility: hidden;
-  }
-  header .phone {
-    display: block;
-    position: absolute;
-    top: 150px;
-    width: 90%;
-    order: 2;
-    text-align: center;
-    padding: 15px 0;
-    border-top: 1px solid #585657;
-    border-bottom: 1px solid #585657;
-  }
-
   header .phone p a {
+    background: none;
+    box-shadow: none;
+    width: auto;
+    height: auto;
+    text-decoration: none;
+  }
+
+  header .phone p a span {
+    display: block;
     color: #000000;
     text-decoration: none;
     font-family: 'GothamProBold', sans-serif;
@@ -1786,7 +1789,7 @@ body::-moz-scrollbar-thumb:hover {
   header .phone p {
     font-family: 'GothamProBold', sans-serif;
     font-size: 1.2rem;
-    margin-left: 17px;
+    margin: auto auto auto 17px;
   }
 
   header .phone p:before {
@@ -1796,6 +1799,18 @@ body::-moz-scrollbar-thumb:hover {
     background-size: 1.2rem;
     height: 1.2rem;
     width: 1.2rem;
-    margin: 0 0 0 -25px;
+    margin-left: -130px;
+  }
+
+  header .phone {
+    display: block;
+    position: absolute;
+    top: 150px;
+    width: 90%;
+    order: 2;
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid #585657;
+    border-bottom: 1px solid #585657;
   }
 }

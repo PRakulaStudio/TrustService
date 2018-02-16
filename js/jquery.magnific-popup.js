@@ -302,7 +302,7 @@
                 });
             } else {
                 mfp.wrap.css({
-                    top: _window.scrollTop(),
+                    top: $("body").scrollTop(),
                     position: 'absolute'
                 });
             }
@@ -1498,7 +1498,7 @@
                 var offset = el.offset();
                 var paddingTop = parseInt(el.css('padding-top'), 10);
                 var paddingBottom = parseInt(el.css('padding-bottom'), 10);
-                offset.top -= ($(window).scrollTop() - paddingTop);
+                offset.top -= ($("body").scrollTop() - paddingTop);
 
 
                 /*

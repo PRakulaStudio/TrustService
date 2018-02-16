@@ -1,3 +1,13 @@
+.special a {
+    color: #333333;
+    text-decoration: none;
+}
+
+.btn-price {
+    width: 200px;
+    text-align: center;
+}
+
 .grid-item {
     margin: 15px 0 0 0;
 }
@@ -23,16 +33,6 @@
     font-family: 'GothamProBold', sans-serif;
     text-transform: uppercase;
     margin: 0 0 15px 15px;
-}
-
-.special a {
-    color: #333333;
-    text-decoration: none;
-}
-
-.btn-price {
-    width: 200px;
-    text-align: center;
 }
 
 .row-column {
@@ -115,12 +115,23 @@
 }
 
 .special > .d-flex > .btn {
+    position: relative;
     width: 230px;
     text-align: center;
     margin: auto !important;
     text-transform: none !important;
     opacity: 0.9;
-    border: 5px solid rgba(255, 255, 255, 0.3);
+}
+
+.special > .d-flex > .btn:before {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 45px;
+    top: -5px;
+    left: -5px;
+    border-radius: 30px;
+    border: 5px solid rgba(255, 255, 255, 0.5);
 }
 
 .special .img img {
@@ -275,14 +286,11 @@
     .characteristics {
         width: 60%;
         margin: 0;
-        background: #FFFFFF;
     }
 
     .special {
-        position: relative;
-        margin: 0;
         width: 38%;
-        height: 300px;
+        margin: 0;
     }
 }
 
