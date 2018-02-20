@@ -11,7 +11,16 @@
 </head>
 <body>
 <?= getData(false, 'header', ['']) ?>
-
+<div class="breadcrumbs">
+    <div class="container">
+        <a href="/">Главная</a>
+        <a href="/catalog/">Каталог техники</a>
+        <?php $category = getCategory(array("id" => getData("category")))['data']; ?>
+        <a href="/catalog/<?= $category['path'] ?>"><?= $category['title'] ?></a>
+        <a class="active" href="<?= '/catalog' . getData('href') ?>"><?= getData('title') ?></a>
+    </div>
+</div>
+</header>
 <main>
     <section class="top">
         <h2><?= getData('title') ?></h2>
@@ -27,19 +36,28 @@
     </section>
 
     <section class="grid-section row-column">
-        <div class="grid-item characteristics">
-            <div class="title">
-                <p>Характеристики</p>
-            </div>
+        <?php
+        $cat_items = getCatalogItemFromParameters(getData('id'));
 
-            <hr class="yellow">
+        foreach ($cat_items as $key => $item) {
+            if ($item['parameter'] == "category" || $item['parameter'] == "photo" || $item['parameter'] == "price" || $item['parameter'] == "description2")
+                unset($cat_items[$key]);
+        }
+        $cat_items = array_values($cat_items);
+        if (count($cat_items) > 0): ?>
+            <div class="grid-item characteristics">
 
-            <div class="text-characteristics">
 
-                <?php
-                $cat_items = getCatalogItemFromParameters(getData('id'));
-                for ($i = 0; $i < count($cat_items) && $i <= 4; $i++):?>
-                    <?php if ($cat_items[$i]['parameter'] != "category" && $cat_items[$i]['parameter'] != "photo"&& $cat_items[$i]['parameter'] != "price"): ?>
+                <div class="title">
+                    <p>Характеристики</p>
+                </div>
+
+                <hr class="yellow">
+
+                <div class="text-characteristics">
+
+                    <?php
+                    for ($i = 0; $i < count($cat_items) && $i <= 4; $i++):?>
                         <div class="name-value">
                             <div>
                                 <p><?= $cat_items[$i]['title'] ?></p>
@@ -50,13 +68,11 @@
                             </div>
                         </div>
                         <hr>
-                    <?php endif; ?>
-                <?php endfor; ?>
+                    <?php endfor; ?>
 
-                <div id="characteristics">
-                    <?php
-                    for ($i = 5; $i < count($cat_items); $i++):?>
-                        <?php if ($cat_items[$i]['parameter'] != "category" && $cat_items[$i]['parameter'] != "photo"&& $cat_items[$i]['parameter'] != "price"): ?>
+                    <div id="characteristics">
+                        <?php
+                        for ($i = 5; $i < count($cat_items); $i++):?>
                             <div class="name-value">
                                 <div>
                                     <p><?= $cat_items[$i]['title'] ?></p>
@@ -67,14 +83,15 @@
                                 </div>
                             </div>
                             <hr>
-                        <?php endif; ?>
-                    <?php endfor; ?>
-                </div>
+                        <?php endfor; ?>
+                    </div>
 
+                </div>
+                <?php if (count($cat_items) > 4): ?>
+                    <div class="d-flex"><a class="btn btn-yellow">развернуть<img src="/assets/images/down-arrow.svg" alt=""></a></div>
+                <?php endif; ?>
             </div>
-            <div class="d-flex"><a class="btn btn-yellow">развернуть<img src="/assets/images/down-arrow.svg" alt=""></a>
-            </div>
-        </div>
+        <?php endif; ?>
 
         <div class="grid-item special">
             <div class="img">
@@ -86,32 +103,25 @@
 
     <section class="grid-section">
         <p></p>
-        <?php if (false): ?>
-
+        <?php if (getData("description2")): ?>
             <div class="grid-item advantage">
                 <div class="title">
-                    <p>Преимущества мини-экскаватора</p>
+                    <p><?= getData("title") ?></p>
                 </div>
 
                 <hr class="yellow">
 
                 <div class="text">
-                    <p>Не следует, однако забывать, что дальнейшее развитие различных форм деятельности влечет за собой
-                        процесс внедрения и модернизации системы обучения кадров,
-                        соответствует насущным потребностям. Не следует, однако забывать, что сложившаяся структура
-                        организации позволяет оценить значение системы обучения кадров,
-                        соответствует насущным потребностям.</p>
-
-                    <p>Таким образом постоянный количественный рост и сфера нашей активности представляет собой интересный
-                        эксперимент проверки форм развития. Разнообразный и богатый
-                        опыт консультация с широким активом требуют определения и уточнения позиций, занимаемых участниками
-                        в отношении поставленных задач. Товарищи! дальнейшее
-                        развитие различных форм деятельности влечет за собой процесс внедрения и модернизации форм развития.
-                        С другой стороны новая модель организационной деятельности
-                        в значительной степени обуславливает создание соответствующий условий активизации.</p>
+                    <?= getData("description2") ?>
                 </div>
-                <div class="d-flex"><a class="btn btn-orange btn-price">Узнать цену</a></div>x
+                <div class="d-flex"><a class="btn btn-orange btn-price">Узнать цену</a></div>
             </div>
+        <?php endif; ?>
+
+        <?php
+        $arr = [];
+        if (getData('category') != 73) {
+            $arr = getCatalogItemsByParameters($parameters = ["category" => 73]); ?>
 
             <div class="grid-title">
                 <p>Навесное оборудование:</p>
@@ -121,39 +131,19 @@
             <div class="swiper-container">
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
-                    <!-- Slides -->
-                    <div class="swiper-slide">
-                        <div class="slide">
-                            <img src="/assets/images/jpg/product-slider.jpg" alt="">
-                            <div class="link">
-                                <a href="#">Ковш для мини-экскаватора</a>
+                    <?php
+                    foreach ($arr as $item):
+                        ?>
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                            <div class="slide">
+                                <img src="<?= $item["photo"] ?>" alt="">
+                                <div class="link">
+                                    <a href="<?= $item["href"] ?>"><?= $item["title"] ?></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide">
-                            <img src="/assets/images/jpg/product-slider.jpg" alt="">
-                            <div class="link">
-                                <a href="#">Ковш для мини-экскаватора</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide">
-                            <img src="/assets/images/jpg/product-slider.jpg" alt="">
-                            <div class="link">
-                                <a href="#">Ковш для мини-экскаватора</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide">
-                            <img src="/assets/images/jpg/product-slider.jpg" alt="">
-                            <div class="link">
-                                <a href="#">Ковш для мини-экскаватора</a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <!-- navigation buttons -->
@@ -161,7 +151,7 @@
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
             </div>
-        <?php endif; ?>
+        <?php } ?>
     </section>
 </main>
 <?= getData(false, 'footer', ['']) ?>
@@ -182,36 +172,21 @@
     </div>
 </div>
 <script>
-    modal("#openModal", ".modal", function (div) {
+    modal(".btn-price", ".modal", function (div) {
         div.querySelector("#send").addEventListener('click', function () {
             let data = new FormData();
             let fname = div.querySelector('.form-name').value;
             let fphone = div.querySelector('.form-phone').value;
             if (fname === "" || fphone === "") {
-                alert("Не все поля заполнены");
+                modalAlert("Внимание!", "Не все поля заполнены");
                 return;
             }
             data.append('name', fname);
             data.append('phone', fphone);
             data.append('catalog_item', <?= getData('id') ?>);
-            return fetch('/system/plugins/SecArgonia/feedback/price/create', {method: 'POST', credentials: 'same-origin', body: data})
-                .then(function (response) {
-                    let responseData = false;
-                    try {
-                        responseData = response.json();
-                    }
-                    catch (e) {
-                        responseData = {status: false, statusText: "Произошла ошибка при соединении"};
-                        response.text().then(console.debug);
-                    }
-
-                    return responseData;
-                })
-                .then(function (response) {
-                    if (response.status) {
-                        alert("Ваша заявка принята, мы ответим Вам в ближайшее время");
-                    }
-                });
+            ajax(data, '/system/plugins/SecArgonia/feedback/price/create', function (response) {
+                modalAlert("Ваша заявка принята", "Мы ответим Вам в ближайшее время");
+            });
         });
     });
 </script>

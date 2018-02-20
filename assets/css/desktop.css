@@ -135,6 +135,10 @@ header .menu-column .menu-column-phone {
     display: flex;
 }
 
+header .header-index .menu-column .menu-column-phone {
+    padding: 47px 9px;
+}
+
 header .menu-column .menu-column-phone a:before {
     content: '';
     position: absolute;

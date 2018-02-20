@@ -278,20 +278,20 @@
     }
 }
 
-@media (min-width: 700px) {
+@media(min-width: 700px) {
     .row-column {
         justify-content: space-between;
+        flex-wrap: nowrap;
     }
 
     .characteristics {
-        width: 60%;
-        margin: 0;
+        width: 150%;
+        margin: 0 10px auto 0;
     }
 
     .special {
-        width: 38%;
+        width: 100%;
         margin: 0;
     }
 }
-
 /* media end */

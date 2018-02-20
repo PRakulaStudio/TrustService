@@ -1,0 +1,38 @@
+<div class="grid-item-full">
+    <div class="fon">
+        <div class="text" data-global-container="action-text"></div>
+    </div>
+</div>
+<div class="d-flex m-auto"><a id="openModal" class="btn btn-orange">Консультация онлайн</a></div>
+<div class="modal">
+    <div class="wrapper">
+        <h3>Оставить заявку на консультацию</h3>
+        <p><input type="text" class="form-name" placeholder="Ваше имя"></p>
+        <p><input type="text" class="form-phone" placeholder="Ваш телефон"></p>
+        <p>
+            <button id="send" class="btn btn-yellow">Оставить заявку</button>
+        </p>
+    </div>
+</div>
+<script>
+    window.addEventListener("load", function () {
+        modal("#openModal", ".modal", function (div) {
+            div.querySelector("#send").addEventListener('click', function () {
+                let data = new FormData();
+                let fname = div.querySelector('.form-name').value;
+                let fphone = div.querySelector('.form-phone').value;
+
+                if (fname === "" || fphone === "") {
+                    modalAlert("Внимание!", "Не все поля заполнены");
+                    return;
+                }
+                data.append('name', fname);
+                data.append('phone', fphone);
+
+                ajax(data, '/system/plugins/SecArgonia/feedback/consultation/create', function (response) {
+                    modalAlert("Ваша заявка принята", "мы проконсультируем Вас в ближайшее время");
+                });
+            });
+        });
+    });
+</script>

@@ -51,47 +51,30 @@
 <div class="modal">
     <div class="wrapper">
         <h3>Оставить заявку</h3>
-        <p>
-            <input type="text" class="form-name" placeholder="Ваше имя">
-        </p>
-        <p>
-            <input type="text" class="form-phone" placeholder="Ваш телефон">
-        </p>
-        <p>
-            <button id="send" class="btn btn-yellow">Оставить заявку</button>
-        </p>
+        <p><input type="text" class="form-name" placeholder="Ваше имя"></p>
+        <p><input type="text" class="form-phone" placeholder="Ваш телефон"></p>
+        <p><button id="send" class="btn btn-yellow">Оставить заявку</button></p>
     </div>
 </div>
 <script>
-    modal("#openModal", ".modal", function (div) {
-        div.querySelector("#send").addEventListener('click', function () {
-            let data = new FormData();
-            let fname = div.querySelector('.form-name').value;
-            let fphone = div.querySelector('.form-phone').value;
-            if (fname === "" || fphone === "") {
-                alert("Не все поля заполнены");
-                return;
-            }
-            data.append('name', fname);
-            data.append('phone', fphone);
-            return fetch('/system/plugins/SecArgonia/feedback/request/create', {method: 'POST', credentials: 'same-origin', body: data})
-                .then(function (response) {
-                    let responseData = false;
-                    try {
-                        responseData = response.json();
-                    }
-                    catch (e) {
-                        responseData = {status: false, statusText: "Произошла ошибка при соединении"};
-                        response.text().then(console.debug);
-                    }
+    window.addEventListener("load", function () {
+        modal("#openModal", ".modal", function (div) {
+            div.querySelector("#send").addEventListener('click', function () {
+                let data = new FormData();
+                let fname = div.querySelector('.form-name').value;
+                let fphone = div.querySelector('.form-phone').value;
 
-                    return responseData;
-                })
-                .then(function (response) {
-                    if (response.status) {
-                        alert("Ваша заявка принята, мы ответим Вам в ближайшее время");
-                    }
+                if (fname === "" || fphone === "") {
+                    modalAlert("Внимание!", "Не все поля заполнены");
+                    return;
+                }
+                data.append('name', fname);
+                data.append('phone', fphone);
+
+                ajax(data, '/system/plugins/SecArgonia/feedback/request/create', function (response) {
+                    modalAlert("Ваша заявка принята", "Мы ответим Вам в ближайшее время");
                 });
+            });
         });
     });
 </script>

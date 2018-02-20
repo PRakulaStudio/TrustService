@@ -75,8 +75,6 @@
 
         <div class="person-block" data-container="persons"></div>
 
-        <div class="d-flex m-auto"><a class="reload-btn"><img src="/assets/images/reload.svg" alt=""></a></div>
-
         <div class="grid-item grid-item-text">
             <div class="text" data-container="page-text"></div>
         </div>
@@ -91,26 +89,20 @@
     });
     div.querySelector("#send").addEventListener('click', function () {
         let data = new FormData();
-        data.append('name', div.querySelector('.form-name').value);
-        data.append('phone', div.querySelector('.form-phone').value);
-        return fetch('/system/plugins/SecArgonia/feedback/service/create', {method: 'POST', credentials: 'same-origin', body: data})
-            .then(function (response) {
-                let responseData = false;
-                try {
-                    responseData = response.json();
-                }
-                catch (e) {
-                    responseData = {status: false, statusText: "Произошла ошибка при соединении"};
-                    response.text().then(console.debug);
-                }
+        let fname = div.querySelector('.form-name').value;
+        let fphone = div.querySelector('.form-phone').value;
+        if (fname === "" || fphone === "") {
+            modalAlert("Внимание!", "Не все поля заполнены");
+            return;
+        }
+        data.append('name', fname);
+        data.append('phone', fphone);
 
-                return responseData;
-            })
-            .then(function (response) {
-                if (response.status) {
-                    alert("Ваша заявка принята, мы запишем Вас на обслуживание в ближайшее время");
-                }
-            });
+        ajax(data, '/system/plugins/SecArgonia/feedback/client/create', function (response) {
+            modalAlert("Ваша заявка принята", "Мы запишем Вас на обслуживание в ближайшее время");
+            div.querySelector('.form-name').value = '';
+            div.querySelector('.form-phone').value = '';
+        });
     });
 </script>
 </body>

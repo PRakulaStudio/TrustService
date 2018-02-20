@@ -1,5 +1,4 @@
 const body = document.querySelector("body");
-log(body);
 
 window.addEventListener("load", function () {
     function a(a, b) {
@@ -176,14 +175,77 @@ function Lightboxer() {
 
 function modal(clicker, modal_div, func) {
     modal_div = document.querySelector(modal_div);
-    document.querySelector(clicker).addEventListener('click', function (e) {
-        e.preventDefault();
-        let lightboxer = new Lightboxer();
-        lightboxer.setHtml("<div class='modal-form'><span class='btn-modal-form-close'></span>" + modal_div.innerHTML + "</div>");
-        document.querySelector(".lightbox-container").addEventListener('click', function (e) {
-            if (e.target.classList.contains("lightbox-container") || e.target.classList.contains("btn-modal-form-close")) lightboxer.closeBox();
+    let id = guidGenerator();
+    document.querySelectorAll(clicker).forEach(clicker => {
+        clicker.addEventListener('click', function (e) {
+            e.preventDefault();
+            let lightboxer = new Lightboxer();
+            lightboxer.div.id = id;
+            lightboxer.setHtml("<div class='modal-form'><span class='btn-modal-form-close'></span>" + modal_div.innerHTML + "</div>");
+            document.querySelector("#" + id).addEventListener('click', function (e) {
+                if (e.target.classList.contains("lightbox-container") || e.target.classList.contains("btn-modal-form-close")) lightboxer.closeBox();
+            });
+            if (func != null) func(lightboxer.div);
+            lightboxer.show();
         });
-        if (func != null) func(lightboxer.div);
-        lightboxer.show();
+    });
+}
+
+function modalLoading() {
+    let modal_div = document.createElement("div");
+    modal_div.classList.add("modal");
+    modal_div.innerHTML = "<img width='50' height='50' style='margin: auto' src='/assets/images/loading.gif'>";
+    body.appendChild(modal_div);
+    let lightboxer = new Lightboxer();
+    lightboxer.setHtml("<div class='modal-form'>" + modal_div.innerHTML + "</div>");
+    lightboxer.show();
+    return lightboxer;
+}
+
+function modalAlert(title, text) {
+    let modal_div = document.createElement("div");
+    modal_div.classList.add("modal");
+    let id = guidGenerator();
+    modal_div.innerHTML = "<div><h3>" + title + "</h3><p>" + text + "</p></div>";
+    body.appendChild(modal_div);
+    let lightboxer = new Lightboxer();
+    lightboxer.div.id = id;
+    lightboxer.setHtml("<div class='modal-form'><span class='btn-modal-form-close'></span>" + modal_div.innerHTML + "</div>");
+    document.querySelector("#" + id).addEventListener('click', function (e) {
+        if (e.target.classList.contains("lightbox-container") || e.target.classList.contains("btn-modal-form-close")) lightboxer.closeBox();
+    });
+    lightboxer.show();
+}
+
+function guidGenerator() {
+    let S4 = function () {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    };
+    return "q" + (S4() + S4() + S4() + S4() + S4() + S4());
+}
+
+function ajax(data, link, success) {
+    let l = modalLoading();
+    fetch(link, {method: 'POST', credentials: 'same-origin', body: data})
+        .then(function (response) {
+            let responseData = false;
+            try {
+                responseData = response.json();
+            }
+            catch (e) {
+                responseData = {status: false, statusText: "Произошла ошибка при соединении"};
+                response.text().then(console.debug);
+            }
+
+            return responseData;
+        })
+        .then(function (response) {
+            if (response.status) {
+                if (success) success(response);
+            }
+        }).catch(function () {
+        modalAlert("Произошла ошибка", "Позвоните нам, и мы ответим на любой Ваш вопрос")
+    }).finally(function () {
+        l.closeBox();
     });
 }
