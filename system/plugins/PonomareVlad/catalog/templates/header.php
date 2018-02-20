@@ -27,6 +27,7 @@
                                         <li><a href="/catalog/crawler">Гусеничные экскаваторы</a></li>
                                         <li><a href="/catalog/wheeled">Колесные экскаваторы</a></li>
                                         <li><a href="/catalog/front_loaders">Фронтальные погрузчики</a></li>
+                                        <li><a href="/catalog/attachments">Навесное оборудование</a></li>
                                     </ul>
                                 </li>
                                 <li><span class="category-item-title">Сервис</span><span class="category-item-arrow"></span>

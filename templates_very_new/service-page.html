@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <div class="d-flex m-auto"><a class="btn btn-orange"><img src="/assets/images/download.png" alt="">Скачать каталог</a></div>
+        <div class="d-flex m-auto"><a data-param-href="link-catalog" data-container="parameters" class="btn btn-orange"><img src="/assets/images/download.png" alt="">Скачать каталог</a></div>
 
         <div class="grid-item d-flex">
             <div class="function">
@@ -73,7 +73,37 @@
             <p>Наши мастера:</p>
         </div>
 
-        <div class="person-block" data-container="persons"></div>
+        <div class="person-block" data-container="persons">
+            <div class="grid-item">
+                <div class="img">
+                    <img src="/assets/images/jpg/service-team.jpg" alt="">
+                </div>
+
+                <div class="text-title">
+                    <p>Иванов Иван Иванович</p>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <div class="img">
+                    <img src="/assets/images/jpg/service-team.jpg" alt="">
+                </div>
+
+                <div class="text-title">
+                    <p>Петров Петр Петрович</p>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <div class="img">
+                    <img src="/assets/images/jpg/service-team.jpg" alt="">
+                </div>
+
+                <div class="text-title">
+                    <p>Васильев Василий Васильевич</p>
+                </div>
+            </div>
+        </div>
 
         <div class="grid-item grid-item-text">
             <div class="text" data-container="page-text"></div>
@@ -81,6 +111,8 @@
     </section>
 </main>
 <footer data-template="footer"></footer>
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+<script src="/system/extensions/webApp/js/app.js"></script>
 <script src="/assets/js/base.js"></script>
 <script>
     let div = document.querySelector('.form');

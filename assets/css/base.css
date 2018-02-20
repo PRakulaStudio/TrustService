@@ -18,6 +18,7 @@
     margin: 0;
     font-family: 'GothamProRegular', sans-serif;
     box-sizing: border-box;
+    -webkit-overflow-scrolling: touch
 }
 
 html, body {
@@ -498,7 +499,7 @@ header {
     background: rgba(0, 0, 0, .8);
     display: flex;
     transition: all 0.2s linear;
-    z-index: 202;
+    z-index: 750;
 }
 
 div.lightbox img {
@@ -520,6 +521,27 @@ div.lightbox img {
     line-height: 1.75;
     display: flex;
     position: relative;
+    z-index: 800;
+}
+
+.modal-loading {
+    display: flex;
+    position: relative;
+    line-height: 1.75;
+    margin: auto;
+    z-index: 850;
+}
+
+.modal-alert {
+    z-index: 900;
+}
+
+.modal-alert > div {
+    width: 100%;
+}
+
+.modal-alert > div p {
+    text-align: center;
 }
 
 .modal-form .btn-modal-form-close {

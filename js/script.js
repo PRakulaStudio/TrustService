@@ -13,7 +13,8 @@ $(document).ready(function () {
 
         midClick: true,
         removalDelay: 300,
-        mainClass: 'my-mfp-zoom-in'
+        mainClass: 'my-mfp-zoom-in',
+        focus: false
     });
     $('.clinet_btn').magnificPopup({
         type: 'inline',
@@ -28,7 +29,8 @@ $(document).ready(function () {
 
         midClick: true,
         removalDelay: 300,
-        mainClass: 'my-mfp-zoom-in'
+        mainClass: 'my-mfp-zoom-in',
+        focus: false
     });
 
 
@@ -41,14 +43,15 @@ $(document).ready(function () {
     });
 
     function FullPgaPluginStart() {
+        $(".about_company").attr("href", "#section3");
+        $(".to_our_proj_btn").attr("href", "#section6");
         if (window.innerWidth <= 992) {
             if ($('html').hasClass('fp-enabled')) {
                 $.fn.fullpage.destroy('all');
                 $StatusR = 0;
             }
 
-            $(".about_company").attr("href", "#section3");
-            $(".to_our_proj_btn").attr("href", "#section6");
+
             //$('header').removeClass('fixed');
         }
         else {
@@ -60,26 +63,10 @@ $(document).ready(function () {
                     scrollBar: true,
                     afterLoad: function (anchorLink, index) {
                         var loadedSection = $(this);
-                        //using index
-                        if (index == 1) {
-                            //$('header').removeClass('fixed');
-                        }
-                        else {
-                            //$('header').addClass('fixed');
-                        }
 
-                        if (index == 2 || index == 4 || index == 6 || index == 7) {
-                            $('#fp-nav ul li').addClass('grey');
-                        }
-                        else {
-                            $('#fp-nav ul li').removeClass('grey');
-                        }
 
                     }
                 });
-
-                $(".about_company").attr("href", "#slide3");
-                $(".to_our_proj_btn").attr("href", "#slide6");
             }
         }
     }
@@ -99,13 +86,6 @@ $(document).ready(function () {
         $('.head_info').toggleClass('active');
         $('.body_loyer').toggleClass('active');
     });
-
-    (function ($) {
-        $(".menu-column > ul").mCustomScrollbar({
-            axis: "y",
-            theme: "dark-3"
-        });
-    })(jQuery);
 
     $('#section5 a').click(function (e) {
         e.preventDefault();
@@ -129,13 +109,19 @@ $(document).ready(function () {
     $("form input").click(function () {
         $(this).parent("form").addClass("before");
     });*/
-
-    $('.to_our_proj_btn, .about_company').bind("click", function (e) {
-        var anchor = $(this);
-        $('html, body').stop().animate({
-            scrollTop: $(anchor.attr('href')).offset().top
-        }, 1000);
+    $('.to_our_proj_btn').on("click", function (e) {
         e.preventDefault();
+        var anchor = $(this).attr('href');
+        $('html, body').stop().animate({
+            scrollTop: $(anchor)[0].offsetTop
+        }, 1000);
+    });
+    $('.about_company').on("click", function (e) {
+        e.preventDefault();
+        var anchor = $(this).attr('href');
+        $('html, body').stop().animate({
+            scrollTop: $(anchor)[0].offsetTop
+        }, 500);
     });
 
 
@@ -245,6 +231,9 @@ $(document).ready(function () {
         }
     });
 
+    inputNumber(document.querySelector('#send_message_popup .form-phone'));
+    inputNumber(document.querySelector('#client_popup .form-phone'));
+
     $("#client_popup form").submit(function (ev) {
         ev.preventDefault();
         let div = this;
@@ -262,8 +251,10 @@ $(document).ready(function () {
             modalAlert("Ваша заявка принята", "мы ответим Вам в ближайшее время");
             div.querySelector('.form-name').value = '';
             div.querySelector('.form-phone').value = '';
+            $.magnificPopup.close();
         });
     });
+
     $("#send_message_popup form").submit(function (ev) {
         ev.preventDefault();
         let div = this;
@@ -284,9 +275,11 @@ $(document).ready(function () {
             modalAlert("Ваша заявка принята", "мы ответим Вам в ближайшее время");
             div.querySelector('.form-name').value = '';
             div.querySelector('.form-phone').value = '';
+            $.magnificPopup.close();
         });
     });
-});
+})
+;
 
 /*$(document).on('click', '.class', function (e) {
     log(e);

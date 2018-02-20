@@ -8,7 +8,7 @@
     <div class="wrapper">
         <h3>Оставить заявку на консультацию</h3>
         <p><input type="text" class="form-name" placeholder="Ваше имя"></p>
-        <p><input type="text" class="form-phone" placeholder="Ваш телефон"></p>
+        <p><input type="tel" class="form-phone" placeholder="Ваш телефон"></p>
         <p>
             <button id="send" class="btn btn-yellow">Оставить заявку</button>
         </p>
@@ -16,7 +16,8 @@
 </div>
 <script>
     window.addEventListener("load", function () {
-        modal("#openModal", ".modal", function (div) {
+        modal("#openModal", ".modal", function (div, ligtboxer) {
+            inputNumber(div.querySelector('.form-phone'));
             div.querySelector("#send").addEventListener('click', function () {
                 let data = new FormData();
                 let fname = div.querySelector('.form-name').value;
@@ -31,6 +32,7 @@
 
                 ajax(data, '/system/plugins/SecArgonia/feedback/consultation/create', function (response) {
                     modalAlert("Ваша заявка принята", "мы проконсультируем Вас в ближайшее время");
+                    ligtboxer.closeBox();
                 });
             });
         });

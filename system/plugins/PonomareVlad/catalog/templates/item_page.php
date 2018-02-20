@@ -172,7 +172,8 @@
     </div>
 </div>
 <script>
-    modal(".btn-price", ".modal", function (div) {
+    modal(".btn-price", ".modal", function (div, lightboxer) {
+        inputNumber(div.querySelector('.form-phone'));
         div.querySelector("#send").addEventListener('click', function () {
             let data = new FormData();
             let fname = div.querySelector('.form-name').value;
@@ -186,6 +187,7 @@
             data.append('catalog_item', <?= getData('id') ?>);
             ajax(data, '/system/plugins/SecArgonia/feedback/price/create', function (response) {
                 modalAlert("Ваша заявка принята", "Мы ответим Вам в ближайшее время");
+                lightboxer.closeBox();
             });
         });
     });

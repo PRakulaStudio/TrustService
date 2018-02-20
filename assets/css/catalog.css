@@ -233,6 +233,11 @@
     text-decoration: underline;
 }
 
+a.btn {
+    color: #333333;
+    text-decoration: none;
+}
+
 /* slider end */
 
 /* media */

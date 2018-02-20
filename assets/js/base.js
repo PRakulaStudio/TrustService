@@ -185,7 +185,7 @@ function modal(clicker, modal_div, func) {
             document.querySelector("#" + id).addEventListener('click', function (e) {
                 if (e.target.classList.contains("lightbox-container") || e.target.classList.contains("btn-modal-form-close")) lightboxer.closeBox();
             });
-            if (func != null) func(lightboxer.div);
+            if (func != null) func(lightboxer.div, lightboxer);
             lightboxer.show();
         });
     });
@@ -197,7 +197,7 @@ function modalLoading() {
     modal_div.innerHTML = "<img width='50' height='50' style='margin: auto' src='/assets/images/loading.gif'>";
     body.appendChild(modal_div);
     let lightboxer = new Lightboxer();
-    lightboxer.setHtml("<div class='modal-form'>" + modal_div.innerHTML + "</div>");
+    lightboxer.setHtml("<div class='modal-loading'>" + modal_div.innerHTML + "</div>");
     lightboxer.show();
     return lightboxer;
 }
@@ -210,12 +210,14 @@ function modalAlert(title, text) {
     body.appendChild(modal_div);
     let lightboxer = new Lightboxer();
     lightboxer.div.id = id;
-    lightboxer.setHtml("<div class='modal-form'><span class='btn-modal-form-close'></span>" + modal_div.innerHTML + "</div>");
+    lightboxer.setHtml("<div class='modal-form modal-alert'><span class='btn-modal-form-close'></span>" + modal_div.innerHTML + "</div>");
     document.querySelector("#" + id).addEventListener('click', function (e) {
         if (e.target.classList.contains("lightbox-container") || e.target.classList.contains("btn-modal-form-close")) lightboxer.closeBox();
     });
     lightboxer.show();
 }
+
+//modalAlert("tt", "dasd");
 
 function guidGenerator() {
     let S4 = function () {
@@ -239,13 +241,42 @@ function ajax(data, link, success) {
 
             return responseData;
         })
+        .catch(function (e) {
+            modalAlert("Произошла ошибка", "Позвоните нам, и мы ответим на любой Ваш вопрос");
+            console.log(e);
+        })
         .then(function (response) {
             if (response.status) {
                 if (success) success(response);
             }
-        }).catch(function () {
-        modalAlert("Произошла ошибка", "Позвоните нам, и мы ответим на любой Ваш вопрос")
-    }).finally(function () {
-        l.closeBox();
-    });
+            return response.status;
+        })
+        .finally(() => {
+            l.closeBox();
+            //alert("Ебеня какие-то");
+        });
+}
+
+function inputNumber(input) {
+    input.onkeypress = function (e) {
+        e = e || event;
+        if (e.ctrlKey || e.altKey || e.metaKey) return;
+        let chr = getChar(e);
+        if (chr == null) return;
+        if (chr < '0' || chr > '9') {
+            return false;
+        }
+    };
+}
+
+function getChar(event) {
+    if (event.which == null) {
+        if (event.keyCode < 32) return null;
+        return String.fromCharCode(event.keyCode) // IE
+    }
+    if (event.which !== 0 && event.charCode !== 0) {
+        if (event.which < 32) return null;
+        return String.fromCharCode(event.which) // остальные
+    }
+    return null; // специальная клавиша
 }
