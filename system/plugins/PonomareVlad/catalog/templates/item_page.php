@@ -137,7 +137,7 @@
                         <!-- Slides -->
                         <div class="swiper-slide">
                             <div class="slide">
-                                <img src="<?= $item["photo"] ?>" alt="">
+                                <a href="<?= $item["href"] ?>"><img src="<?= $item["photo"] ?>" alt=""></a>
                                 <div class="link">
                                     <a href="<?= $item["href"] ?>"><?= $item["title"] ?></a>
                                 </div>
