@@ -465,6 +465,8 @@ div.lightbox {
 }
 
 div.lightbox img {
+    max-width: 80vw;
+    max-height: 80vh;
     margin: auto;
 }
 

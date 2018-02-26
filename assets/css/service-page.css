@@ -214,12 +214,8 @@
         justify-content: start;
     }
 
-    .person-block > .grid-item {
-        width: 32%;
-    }
-
-    .person-block > .grid-item:nth-child(3n+2) {
-        margin: 0 2% 15px 2%;
+    .person-block > .grid-item:nth-child(2n) {
+        margin: 0 1% 15px 1%;
     }
 }
 

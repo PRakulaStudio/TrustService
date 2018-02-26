@@ -10,10 +10,6 @@
     margin: 0 15px 15px 15px;
 }
 
-.grid-item:hover {
-    outline: 2px solid #F5AE2F;
-}
-
 .grid-item > .img > div:hover > div {
     background: rgba(0, 0, 0, 0.5) url(../images/loop.png) no-repeat center;
 }
@@ -37,6 +33,7 @@
 .grid-item > .img > div > img {
     max-width: 250px;
     border: 5px solid;
+    object-fit: contain;
 }
 
 .grid-item > .img > div > div {
@@ -50,7 +47,7 @@
 }
 
 /* media */
-@media (min-width: 600px) {
+@media(min-width: 600px) {
     .grid-section {
         justify-content: space-between;
     }
@@ -61,7 +58,7 @@
     }
 }
 
-@media (min-width: 1024px) {
+@media(min-width: 1024px) {
     .grid-section {
         justify-content: start;
     }
@@ -74,5 +71,4 @@
         margin: 0 2% 15px 2%;
     }
 }
-
 /* media end */

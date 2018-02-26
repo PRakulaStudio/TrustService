@@ -1,39 +1,20 @@
+let header = document.querySelector("header");
+header.style.position = "fixed";
+window.addEventListener("load", function () {
+    let headerClass = header.querySelector(".header");
+    let sections = document.querySelectorAll("#fullpage section");
+    headerClass.classList.add("atTop");
+    setTimeout(function () {
+        headerClass.style.transition = "all .3s linear";
+    }, 100);
+    window.addEventListener("scroll", function () {
+        let pageY = window.pageYOffset || document.documentElement.scrollTop;
+        if (pageY >= sections[0].clientHeight) headerClass.classList.remove("atTop");
+        else headerClass.classList.add("atTop");
+    });
+});
+
 $(document).ready(function () {
-
-    $('.connect_btn').magnificPopup({
-        type: 'inline',
-
-        fixedContentPos: false,
-        fixedBgPos: true,
-
-        overflowY: 'auto',
-
-        closeBtnInside: true,
-        preloader: false,
-
-        midClick: true,
-        removalDelay: 300,
-        mainClass: 'my-mfp-zoom-in',
-        focus: false
-    });
-    $('.clinet_btn').magnificPopup({
-        type: 'inline',
-
-        fixedContentPos: false,
-        fixedBgPos: true,
-
-        overflowY: 'auto',
-
-        closeBtnInside: true,
-        preloader: false,
-
-        midClick: true,
-        removalDelay: 300,
-        mainClass: 'my-mfp-zoom-in',
-        focus: false
-    });
-
-
     var $StatusR = 0;
 
     FullPgaPluginStart();
@@ -70,30 +51,52 @@ $(document).ready(function () {
             }
         }
     }
+    
+    $(".about_company").attr("href", "#section3");
+    $(".to_our_proj_btn").attr("href", "#section6");
+    modal('.connect_btn', ".modal-send-message", function (div, lightboxer) {
+        inputNumber(div.querySelector('.form-phone'));
+        div.querySelector(".btn-send").addEventListener('click', function () {
+            let data = new FormData();
+            let fname = div.querySelector('.form-name').value;
+            let fphone = div.querySelector('.form-phone').value;
 
-    $('.menu_btn').click(function (e) {
-        e.preventDefault();
-        //$('header').toggleClass('active');
-        $('.head_info').toggleClass('active');
-        $('.body_loyer').toggleClass('active');
+            if (fname === "" || fphone === "") {
+                modalAlert("Внимание!", "Не все поля заполнены");
+                return;
+            }
+            data.append('name', fname);
+            data.append('phone', fphone);
+
+            ajax(data, '/system/plugins/SecArgonia/feedback/client/create', function (response) {
+                modalAlert("Ваша заявка принята", "Мы ответим Вам в ближайшее время");
+                lightboxer.closeBox();
+            });
+        });
     });
-    $(".menu_btn").on("click", function (e) {
-        e.stopPropagation();
-    });
-    $(".body_loyer").on("click", function (e) {
-        e.preventDefault();
-        //$('header').toggleClass('active');
-        $('.head_info').toggleClass('active');
-        $('.body_loyer').toggleClass('active');
+
+    modal('.clinet_btn', ".modal-be-client", function (div, lightboxer) {
+        inputNumber(div.querySelector('.form-phone'));
+        div.querySelector(".btn-send").addEventListener('click', function () {
+            let data = new FormData();
+            let fname = div.querySelector('.form-name').value;
+            let fphone = div.querySelector('.form-phone').value;
+
+            if (fname === "" || fphone === "") {
+                modalAlert("Внимание!", "Не все поля заполнены");
+                return;
+            }
+            data.append('name', fname);
+            data.append('phone', fphone);
+            ajax(data, '/system/plugins/SecArgonia/feedback/message/create', function (response) {
+                modalAlert("Ваша заявка принята", "Мы ответим Вам в ближайшее время");
+                lightboxer.closeBox();
+            });
+        });
     });
 
     $('#section5 a').click(function (e) {
         e.preventDefault();
-    });
-
-    $('.accardion h4').click(function () {
-        $(this).toggleClass('active');
-        $(this).parent('.accardion').find('.accardion_block').stop().slideToggle();
     });
 
     $('.video_play').on('click', function (e) {
@@ -101,14 +104,7 @@ $(document).ready(function () {
         $("#video_about")[0].src += "&autoplay=1";
         $(this).hide();
     });
-    /*Phone input placehoder mask*/
-    /*jQuery(function ($) {
-        $('input[name="phone"]').mask("+___________");
-    });
-    /!*Phone input placeholder mask End*!/
-    $("form input").click(function () {
-        $(this).parent("form").addClass("before");
-    });*/
+
     $('.to_our_proj_btn').on("click", function (e) {
         e.preventDefault();
         var anchor = $(this).attr('href');
@@ -231,57 +227,4 @@ $(document).ready(function () {
         }
     });
 
-    inputNumber(document.querySelector('#send_message_popup .form-phone'));
-    inputNumber(document.querySelector('#client_popup .form-phone'));
-
-    $("#client_popup form").submit(function (ev) {
-        ev.preventDefault();
-        let div = this;
-        let data = new FormData();
-        let fname = div.querySelector('.form-name').value;
-        let fphone = div.querySelector('.form-phone').value;
-        if (fname === "" || fphone === "") {
-            modalAlert("Внимание!", "Не все поля заполнены");
-            return;
-        }
-        data.append('name', fname);
-        data.append('phone', fphone);
-
-        ajax(data, '/system/plugins/SecArgonia/feedback/client/create', function (response) {
-            modalAlert("Ваша заявка принята", "мы ответим Вам в ближайшее время");
-            div.querySelector('.form-name').value = '';
-            div.querySelector('.form-phone').value = '';
-            $.magnificPopup.close();
-        });
-    });
-
-    $("#send_message_popup form").submit(function (ev) {
-        ev.preventDefault();
-        let div = this;
-        let data = new FormData();
-        let fname = div.querySelector('.form-name').value;
-        let fphone = div.querySelector('.form-phone').value;
-        /*let fmail = div.querySelector('.form-mail').value;
-        let fmessage = div.querySelector('.form-message').value;*/
-        if (fname === "" || fphone === "" /*|| fmail === "" || fmessage === ""*/) {
-            modalAlert("Внимание!", "Не все поля заполнены");
-            return;
-        }
-        data.append('name', fname);
-        data.append('phone', fphone);
-        /*data.append('email', fmail);
-        data.append('message', fmessage);*/
-        ajax(data, '/system/plugins/SecArgonia/feedback/message/create', function (response) {
-            modalAlert("Ваша заявка принята", "мы ответим Вам в ближайшее время");
-            div.querySelector('.form-name').value = '';
-            div.querySelector('.form-phone').value = '';
-            $.magnificPopup.close();
-        });
-    });
 })
-;
-
-/*$(document).on('click', '.class', function (e) {
-    log(e);
-
-});*/
