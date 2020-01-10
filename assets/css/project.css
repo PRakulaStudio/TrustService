@@ -40,7 +40,7 @@
 }
 
 /* media */
-@media (min-width: 600px) {
+@media(min-width: 600px) {
     .grid-item-text {
         display: flex;
         flex-direction: row;
@@ -50,9 +50,8 @@
         margin: 0 15px 0 0;
     }
 
-    .grid-item-text > .text p {
+    .grid-item-text > .text p{
         padding: 0;
     }
 }
-
 /* media end */

@@ -16,7 +16,6 @@ header .logo {
     order: 1;
     flex-grow: 10;
     margin-top: 7px;
-    margin-left: 10px;
 }
 
 header .logo span {
@@ -31,10 +30,6 @@ header .logo span {
     top: -10px;
     left: 20px;
     display: inline-block;
-}
-
-header, header * {
-    box-sizing: border-box;
 }
 
 header .phone {
@@ -52,20 +47,16 @@ header .header {
 }
 
 header .phone {
-    order: 2;
-    display: flex;
+    display: none;
 }
 
-header .phone p a {
-    background: none;
-    box-shadow: none;
-    width: auto;
-    height: auto;
-    text-decoration: none;
-}
-
-header .phone p a span {
+header .phone-desktop {
     display: block;
+    order: 2;
+    margin: auto;
+}
+
+header .phone-desktop p a {
     color: #000000;
     text-decoration: none;
     font-family: 'GothamProBold', sans-serif;
@@ -73,13 +64,13 @@ header .phone p a span {
     margin: 0 10px;
 }
 
-header .phone p {
+header .phone-desktop p {
     font-family: 'GothamProBold', sans-serif;
     font-size: 1.2rem;
-    margin: auto auto auto 17px;
+    margin-left: 17px;
 }
 
-header .phone p:before {
+header .phone-desktop p:before {
     content: '';
     position: absolute;
     background-image: url("../images/phone-yellow.png");
@@ -125,8 +116,7 @@ header .menu-column-phone {
 header .menu .menu-column > ul {
     order: 2;
     margin: 10px;
-    padding: 0 20px;
-    flex-grow: 1;
+    padding: 0 20px
 }
 
 header .menu-column .menu-column-phone {
@@ -151,19 +141,17 @@ header .menu-column .menu-column-phone .btn-menu-close {
     margin-top: -10px;
 }
 
-header .menu-column .menu-column-phone a span {
+header .menu-column .menu-column-phone a {
     font-family: 'GothamProBold', sans-serif;
     font-size: 1.2rem;
-    color: #000;
-}
-
-header .menu-column .menu-column-phone a {
     position: relative;
     padding: 7px 0;
+    color: #000;
+
 }
 
 header .menu-column .menu-column-phone p {
-    margin: -10px 11px 0 auto;
+    margin: -9px 0 0 auto;
 }
 
 /* HEADER */
@@ -190,17 +178,3 @@ footer {
 .blockquotes {
     margin: auto;
 }
-
-/*
-.scroll-page {
-    height: 100%;
-    position: relative;
-}
-
-.scroll-page section {
-    height: 100%;
-    max-width: 100%;
-    min-height: 100%;
-    position: relative;
-}
-*/

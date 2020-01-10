@@ -13,7 +13,7 @@
     object-fit: cover;
 }
 
-.grid-item > .text p {
+.grid-item > .text p{
     padding: 10px 15px;
 }
 
@@ -89,17 +89,16 @@
 }
 
 /* media */
-@media (min-width: 800px) {
+@media(min-width: 800px) {
     .function {
         float: right;
         margin: 0 0 0 15px;
     }
 }
 
-@media (min-width: 1024px) {
-    .grid-item > .text p {
+@media(min-width: 1024px) {
+    .grid-item > .text p{
         padding: 10px 0;
     }
 }
-
 /* media end */

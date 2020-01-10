@@ -10,10 +10,6 @@
     margin: 0 15px 15px 15px;
 }
 
-.grid-item:hover {
-    outline: 2px solid #F5AE2F;
-}
-
 .grid-item > .img > div:hover > div {
     background: rgba(0, 0, 0, 0.5) url(../images/loop.png) no-repeat center;
 }
@@ -50,7 +46,7 @@
 }
 
 /* media */
-@media (min-width: 600px) {
+@media(min-width: 600px) {
     .grid-section {
         justify-content: space-between;
     }
@@ -61,7 +57,7 @@
     }
 }
 
-@media (min-width: 1024px) {
+@media(min-width: 1024px) {
     .grid-section {
         justify-content: start;
     }
@@ -74,5 +70,4 @@
         margin: 0 2% 15px 2%;
     }
 }
-
 /* media end */

@@ -22,18 +22,6 @@
     object-fit: contain;
 }
 
-.grid-item > .text {
-    height: 85px;
-    overflow: hidden;
-}
-
-.grid-item > .text p {
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-}
-
 .grid-item > .d-flex > .btn {
     font-family: 'GothamProRegular', sans-serif;
     text-transform: none;
@@ -49,7 +37,7 @@
 }
 
 /* media */
-@media (min-width: 600px) {
+@media(min-width: 600px) {
     .grid-section {
         justify-content: space-between;
     }
@@ -60,7 +48,7 @@
     }
 }
 
-@media (min-width: 1024px) {
+@media(min-width: 1024px) {
     .grid-section {
         justify-content: start;
     }
@@ -73,5 +61,4 @@
         margin: 0 2% 15px 2%;
     }
 }
-
 /* media end */

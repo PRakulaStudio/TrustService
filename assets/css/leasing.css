@@ -56,11 +56,10 @@
 }
 
 /* media */
-@media (min-width: 600px) {
+@media(min-width: 600px) {
     .grid-item {
         display: flex;
         flex-direction: row;
     }
 }
-
 /* media end */
