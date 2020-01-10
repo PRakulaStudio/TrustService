@@ -155,15 +155,13 @@ header .menu-column .menu-column-phone .btn-menu-close {
     margin-top: -10px;
 }
 
-header .menu-column .menu-column-phone a span {
+header .menu-column .menu-column-phone a {
     font-family: 'GothamProBold', sans-serif;
     font-size: 1.2rem;
-    color: #000;
-}
-
-header .menu-column .menu-column-phone a {
     position: relative;
     padding: 7px 0;
+    color: #000;
+
 }
 
 header .menu-column .menu-column-phone p {
